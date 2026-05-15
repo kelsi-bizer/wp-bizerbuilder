@@ -2,15 +2,15 @@
 /**
  * Custom API class.
  *
- * @package WP-Autoplugin
+ * @package WP-Bizerbuilder
  * @since 1.2
  * @version 1.2
- * @link https://wp-autoplugin.com
+ * @link https://wp-bizerbuilder.com
  * @license GPL-2.0+
  * @license https://www.gnu.org/licenses/gpl-2.0.html
  */
 
-namespace WP_Autoplugin;
+namespace WP_Bizerbuilder;
 
 if ( ! defined( 'ABSPATH' ) ) {
 	exit;
@@ -108,7 +108,7 @@ class Custom_API extends OpenAI_API {
 		if ( empty( $data['choices'][0]['message']['content'] ) ) {
 			return new \WP_Error(
 				'api_error',
-				__( 'Error communicating with the API.', 'wp-autoplugin' ) . "\n" . print_r( $data, true ) // phpcs:ignore WordPress.PHP.DevelopmentFunctions.error_log_print_r
+				__( 'Error communicating with the API.', 'wp-bizerbuilder' ) . "\n" . print_r( $data, true ) // phpcs:ignore WordPress.PHP.DevelopmentFunctions.error_log_print_r
 			);
 		}
 

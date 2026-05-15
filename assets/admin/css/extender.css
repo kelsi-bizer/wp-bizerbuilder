@@ -1,4 +1,4 @@
-.wp-autoplugin-admin-container {
+.wp-bizerbuilder-admin-container {
     max-width: 800px;
     margin: 20px auto;
     background-color: #fff;
@@ -7,11 +7,11 @@
     box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
 }
 
-.wrap.wp-autoplugin {
+.wrap.wp-bizerbuilder {
     margin: 0;
 }
 
-.wrap.wp-autoplugin h1 {
+.wrap.wp-bizerbuilder h1 {
     color: #23282d;
     font-size: 24px;
     margin-bottom: 20px;
@@ -20,17 +20,17 @@
     padding-top: 0;
 }
 
-.autoplugin-message pre {
+.bizerbuilder-message pre {
     text-wrap: wrap;
 }
 
-.wrap.wp-autoplugin.loading form,
+.wrap.wp-bizerbuilder.loading form,
 #hooks-content.loading form {
     opacity: 0.6;
     pointer-events: none;
 }
 
-#wp-autoplugin-footer span.dashicons.dashicons-admin-plugins {
+#wp-bizerbuilder-footer span.dashicons.dashicons-admin-plugins {
     border: 2px solid currentColor;
     border-radius: 100px;
     font-size: 18px;
@@ -40,15 +40,15 @@
     margin-right: 2px;
 }
 
-/* Align buttons inside .autoplugin-actions */
-.autoplugin-actions {
+/* Align buttons inside .bizerbuilder-actions */
+.bizerbuilder-actions {
     display: flex;
     justify-content: space-between;
     align-items: center;
     margin-top: 20px;
 }
 
-.autoplugin-message {
+.bizerbuilder-message {
     margin-top: 20px;
     padding: 10px;
     border-radius: 4px;
@@ -56,48 +56,48 @@
     border: 1px solid #ddd;
 }
 
-.wp-autoplugin textarea {
+.wp-bizerbuilder textarea {
     width: 100%;
 }
-.wp-autoplugin input[type="text"] {
+.wp-bizerbuilder input[type="text"] {
     width: 100%;
 }
 
-.wp-autoplugin h1 {
+.wp-bizerbuilder h1 {
     margin-bottom: 20px;
 }
-.wp-autoplugin p {
+.wp-bizerbuilder p {
     margin-bottom: 10px;
 }
 #extended-hooks-plugin-message p {
     margin-top: 0;
 }
-.wp-autoplugin .wrap {
+.wp-bizerbuilder .wrap {
     margin-top: 20px;
     padding: 20px;
     background-color: #fff;
     border: 1px solid #ddd;
     border-radius: 4px;
 }
-.autoplugin-message {
+.bizerbuilder-message {
     margin-top: 20px;
     padding: 10px;
     border-radius: 4px;
 }
-.autoplugin-message.success {
+.bizerbuilder-message.success {
     background-color: #d4edda;
     border-color: #c3e6cb;
     color: #155724;
 }
-.autoplugin-message.error {
+.bizerbuilder-message.error {
     background-color: #f8d7da;
     border-color: #f5c6cb;
     color: #721c24;
 }
-.autoplugin-message.hidden {
+.bizerbuilder-message.hidden {
     display: none;
 }
-.wp-autoplugin .button-primary.button-hero {
+.wp-bizerbuilder .button-primary.button-hero {
     margin-top: 20px;
 }
 .copy-hooks-description {
@@ -110,17 +110,17 @@
 }
 
 /* Accordions */
-.wp-autoplugin * {
+.wp-bizerbuilder * {
     box-sizing: border-box;
 }
-.wp-autoplugin .autoplugin-accordion {
+.wp-bizerbuilder .bizerbuilder-accordion {
 	border: 1px solid #c3c4c7;
     border-bottom-width: 0px;
 }
-.wp-autoplugin .autoplugin-accordion:last-child {
+.wp-bizerbuilder .bizerbuilder-accordion:last-child {
     border-bottom-width: 1px;
 }
-.wp-autoplugin .autoplugin-accordion-heading {
+.wp-bizerbuilder .bizerbuilder-accordion-heading {
 	margin: 0;
 	border-top: 1px solid #c3c4c7;
 	font-size: inherit;
@@ -128,10 +128,10 @@
 	font-weight: normal;
 	color: inherit;
 }
-.wp-autoplugin .autoplugin-accordion-heading:first-child {
+.wp-bizerbuilder .bizerbuilder-accordion-heading:first-child {
 	border-top: none;
 }
-.wp-autoplugin .autoplugin-accordion-trigger {
+.wp-bizerbuilder .bizerbuilder-accordion-trigger {
 	background: #fff;
 	border: 0;
 	color: #2c3338;
@@ -149,11 +149,11 @@
 	-webkit-user-select: auto;
 	user-select: auto;
 }
-.wp-autoplugin .autoplugin-accordion-trigger:hover,
-.wp-autoplugin .autoplugin-accordion-trigger:active {
+.wp-bizerbuilder .bizerbuilder-accordion-trigger:hover,
+.wp-bizerbuilder .bizerbuilder-accordion-trigger:active {
 	background: #f6f7f7;
 }
-.wp-autoplugin .autoplugin-accordion-trigger:focus {
+.wp-bizerbuilder .bizerbuilder-accordion-trigger:focus {
 	color: #1d2327;
 	border: none;
 	box-shadow: none;
@@ -161,12 +161,12 @@
 	outline: 2px solid #2271b1;
 	background-color: #f6f7f7;
 }
-.wp-autoplugin .autoplugin-accordion-trigger .title {
+.wp-bizerbuilder .bizerbuilder-accordion-trigger .title {
 	pointer-events: none;
 	font-weight: 600;
 	flex-grow: 1;
 }
-.wp-autoplugin .autoplugin-accordion-trigger .icon {
+.wp-bizerbuilder .bizerbuilder-accordion-trigger .icon {
 	border: solid #50575e;
 	border-width: 0 2px 2px 0;
 	height: 0.5rem;
@@ -177,30 +177,30 @@
 	transform: translateY(-70%) rotate(45deg);
 	width: 0.5rem;
 }
-.wp-autoplugin .autoplugin-accordion.active .icon {
+.wp-bizerbuilder .bizerbuilder-accordion.active .icon {
     transform: translateY(-50%) rotate(-135deg);
 }
 
-.wp-autoplugin .autoplugin-accordion-content {
+.wp-bizerbuilder .bizerbuilder-accordion-content {
     display: none;
     padding: 1em 1.5em;
     background-color: #fff;
     border-top: 1px solid #c3c4c7;
 }
-.wp-autoplugin .autoplugin-accordion.active .autoplugin-accordion-content {
+.wp-bizerbuilder .bizerbuilder-accordion.active .bizerbuilder-accordion-content {
     display: block;
 }
 
-.autoplugin-message:empty {
+.bizerbuilder-message:empty {
     display: none;
 }
 
-.wp-autoplugin .CodeMirror.CodeMirror-wrap {
+.wp-bizerbuilder .CodeMirror.CodeMirror-wrap {
     border: 1px solid #ddd;
     border-radius: 3px;
 }
 
-.autoplugin-code-warning {
+.bizerbuilder-code-warning {
     background-color: #fff3cd;
     border-color: #ffeeba;
     color: #856404;
@@ -209,7 +209,7 @@
     margin-top: 20px;
 }
 
-#wp-autoplugin-footer {
+#wp-bizerbuilder-footer {
     display: flex;
     justify-content: space-between;
     align-items: center;
@@ -218,23 +218,23 @@
     border-top: 1px solid #eee;
 }
 
-#wp-autoplugin-footer .footer-left {
+#wp-bizerbuilder-footer .footer-left {
     display: flex;
     align-items: center;
     color: #777;
     font-size: 11px;
 }
 
-#wp-autoplugin-footer .footer-left code {
+#wp-bizerbuilder-footer .footer-left code {
     font-size: 11px;
 }
 
-#wp-autoplugin-footer .footer-left .separator {
+#wp-bizerbuilder-footer .footer-left .separator {
     color: #777;
     margin: 0 0.5em;
 }
 
-#wp-autoplugin-footer .footer-right {
+#wp-bizerbuilder-footer .footer-right {
     font-family: monospace;
     font-size: 13px;
     color: #666;

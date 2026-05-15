@@ -1,17 +1,17 @@
 jQuery(document).ready(function($) {
 	// Store model information for dynamic updates
-	window.wpAutopluginModels = wpAutopluginFooter.models;
-	window.dispatchEvent(new CustomEvent('wpAutopluginModelsUpdated'));
+	window.wpBizerbuilderModels = wpBizerbuilderFooter.models;
+	window.dispatchEvent(new CustomEvent('wpBizerbuilderModelsUpdated'));
 	
 	// Global token tracking
-	window.wpAutopluginTokens = {
+	window.wpBizerbuilderTokens = {
 		total: { input_tokens: 0, output_tokens: 0 },
 		steps: [],
 		lastStepTime: new Date()
 	};
 	
 	// Set initial step and model
-	var defaultStep = wpAutopluginFooter.default_step;
+	var defaultStep = wpBizerbuilderFooter.default_step;
 	document.body.setAttribute('data-current-step', defaultStep);
 	if (window.getModelForStep) {
 		var initialModelType = window.getModelForStep(defaultStep);
@@ -20,7 +20,7 @@ jQuery(document).ready(function($) {
 
 	// Function to update footer model display
 	window.updateFooterModel = function(modelType) {
-		var modelToShow = window.wpAutopluginModels[modelType] || window.wpAutopluginModels.default;
+		var modelToShow = window.wpBizerbuilderModels[modelType] || window.wpBizerbuilderModels.default;
 		$('#model-display code').text(modelToShow);
 	};
 
@@ -50,8 +50,8 @@ jQuery(document).ready(function($) {
 	window.addTokenUsage = function(stepName, modelUsed, inputTokens, outputTokens) {
 		if (inputTokens !== undefined && outputTokens !== undefined && inputTokens >= 0 && outputTokens >= 0) {
 			// Ensure global object exists
-			if (!window.wpAutopluginTokens) {
-				window.wpAutopluginTokens = {
+			if (!window.wpBizerbuilderTokens) {
+				window.wpBizerbuilderTokens = {
 					total: { input_tokens: 0, output_tokens: 0 },
 					steps: [],
 					lastStepTime: new Date()
@@ -60,14 +60,14 @@ jQuery(document).ready(function($) {
 			
 			// Calculate duration since last step
 			var now = new Date();
-			var duration = Math.round((now - window.wpAutopluginTokens.lastStepTime) / 1000); // Duration in seconds
+			var duration = Math.round((now - window.wpBizerbuilderTokens.lastStepTime) / 1000); // Duration in seconds
 			
 			// Add to total
-			window.wpAutopluginTokens.total.input_tokens += inputTokens;
-			window.wpAutopluginTokens.total.output_tokens += outputTokens;
+			window.wpBizerbuilderTokens.total.input_tokens += inputTokens;
+			window.wpBizerbuilderTokens.total.output_tokens += outputTokens;
 			
 			// Record step data
-			window.wpAutopluginTokens.steps.push({
+			window.wpBizerbuilderTokens.steps.push({
 				step: stepName || 'Unknown Step',
 				model: modelUsed || 'Unknown Model',
 				input_tokens: inputTokens,
@@ -77,7 +77,7 @@ jQuery(document).ready(function($) {
 			});
 			
 			// Update last step time for next calculation
-			window.wpAutopluginTokens.lastStepTime = now;
+			window.wpBizerbuilderTokens.lastStepTime = now;
 			
 			// Update display
 			updateTokenDisplayFromGlobal();
@@ -86,7 +86,7 @@ jQuery(document).ready(function($) {
 	
 	// Function to update footer display from global totals
 	function updateTokenDisplayFromGlobal() {
-		var total = window.wpAutopluginTokens.total;
+		var total = window.wpBizerbuilderTokens.total;
 		$('#token-input').text(total.input_tokens.toLocaleString());
 		$('#token-output').text(total.output_tokens.toLocaleString());
 		$('#token-display').show();
@@ -108,7 +108,7 @@ jQuery(document).ready(function($) {
 	
 	// Function to reset all token tracking (only when starting completely over)
 	window.resetTokenTracking = function() {
-		window.wpAutopluginTokens = {
+		window.wpBizerbuilderTokens = {
 			total: { input_tokens: 0, output_tokens: 0 },
 			steps: [],
 			lastStepTime: new Date()
@@ -173,22 +173,22 @@ jQuery(document).ready(function($) {
 	// Function to show token breakdown
 	function showTokenBreakdown() {
 		var content = $('#token-breakdown-content');
-		var steps = window.wpAutopluginTokens ? window.wpAutopluginTokens.steps : [];
-		var total = window.wpAutopluginTokens ? window.wpAutopluginTokens.total : {input_tokens: 0, output_tokens: 0};
+		var steps = window.wpBizerbuilderTokens ? window.wpBizerbuilderTokens.steps : [];
+		var total = window.wpBizerbuilderTokens ? window.wpBizerbuilderTokens.total : {input_tokens: 0, output_tokens: 0};
 		
 		if (!steps || steps.length === 0) {
-			content.html('<p style="text-align: center; color: #666; font-style: italic;">' + wpAutopluginFooter.no_token_data + '</p>');
+			content.html('<p style="text-align: center; color: #666; font-style: italic;">' + wpBizerbuilderFooter.no_token_data + '</p>');
 			return;
 		}
 		
 		var html = '<div style="margin-bottom: 15px;">';
-		html += '<h4 style="margin: 0 0 10px 0; color: #23282d;">' + wpAutopluginFooter.total_usage + '</h4>';
+		html += '<h4 style="margin: 0 0 10px 0; color: #23282d;">' + wpBizerbuilderFooter.total_usage + '</h4>';
 		html += '<div style="background: #f8f9fa; padding: 10px; border-radius: 4px; font-family: monospace; font-size: 14px; font-weight: 600;">';
 		html += '<span style="color: #007cba;">' + total.input_tokens.toLocaleString() + '</span> input tokens + ';
 		html += '<span style="color: #d63384;">' + total.output_tokens.toLocaleString() + '</span> output tokens';
 		html += '</div></div>';
 		
-		html += '<h4 style="margin: 15px 0 10px 0; color: #23282d;">' + wpAutopluginFooter.step_breakdown + '</h4>';
+		html += '<h4 style="margin: 15px 0 10px 0; color: #23282d;">' + wpBizerbuilderFooter.step_breakdown + '</h4>';
 		html += '<div style="max-height: 300px; overflow-y: auto;">';
 		
 		steps.forEach(function(step, index) {
@@ -233,8 +233,8 @@ jQuery(document).ready(function($) {
 			url: ajaxurl,
 			type: 'POST',
 			data: {
-				action: 'wp_autoplugin_change_models',
-				nonce: wpAutopluginFooter.nonce,
+				action: 'wp_bizerbuilder_change_models',
+				nonce: wpBizerbuilderFooter.nonce,
 				default_model: defaultModel,
 				planner_model: plannerModel,
 				coder_model: coderModel,
@@ -243,11 +243,11 @@ jQuery(document).ready(function($) {
 			success: function(response) {
 				if (response.success) {
 					// Update stored models and refresh display
-					window.wpAutopluginModels.default = defaultModel;
-					window.wpAutopluginModels.planner = plannerModel || defaultModel;
-					window.wpAutopluginModels.coder = coderModel || defaultModel;
-					window.wpAutopluginModels.reviewer = reviewerModel || defaultModel;
-					window.dispatchEvent(new CustomEvent('wpAutopluginModelsUpdated'));
+					window.wpBizerbuilderModels.default = defaultModel;
+					window.wpBizerbuilderModels.planner = plannerModel || defaultModel;
+					window.wpBizerbuilderModels.coder = coderModel || defaultModel;
+					window.wpBizerbuilderModels.reviewer = reviewerModel || defaultModel;
+					window.dispatchEvent(new CustomEvent('wpBizerbuilderModelsUpdated'));
 					
 					// Hide modal
 					$('#model-selection-modal').hide();
@@ -257,11 +257,11 @@ jQuery(document).ready(function($) {
 					var modelType = window.getModelForStep(currentStep);
 					window.updateFooterModel(modelType);
 				} else {
-					alert(response.data.message || wpAutopluginFooter.error_saving_models);
+					alert(response.data.message || wpBizerbuilderFooter.error_saving_models);
 				}
 			},
 			error: function() {
-				alert(wpAutopluginFooter.error_saving_models_ajax);
+				alert(wpBizerbuilderFooter.error_saving_models_ajax);
 			}
 		});
 	});

@@ -5,16 +5,16 @@
  * This is a modified version of the WP_GitHub_Updater class originally created by Joachim Kudish.
  *
  * @version 1.8
- * @author WP-Autoplugin
- * @link https://wp-autoplugin.com
- * @package WP-Autoplugin
+ * @author WP-Bizerbuilder
+ * @link https://wp-bizerbuilder.com
+ * @package WP-Bizerbuilder
  *
  * Based on WP_GitHub_Updater by Joachim Kudish
  * @link https://github.com/jkudish/WP-GitHub-Plugin-Updater
  * @license http://www.gnu.org/copyleft/gpl.html GNU Public License
  */
 
-namespace WP_Autoplugin;
+namespace WP_Bizerbuilder;
 
 // Exit if accessed directly.
 if ( ! defined( 'ABSPATH' ) ) {
@@ -404,9 +404,9 @@ class GitHub_Updater {
 		$github = ! empty( $this->config['github_url'] ) ? esc_url( $this->config['github_url'] ) : '#';
 
 		echo '<div class="wrap">';
-		echo '<h2>' . esc_html__( 'Plugin Information', 'wp-autoplugin' ) . '</h2>';
-		echo '<p>' . esc_html__( 'See the GitHub page for details.', 'wp-autoplugin' ) . '</p>';
-		echo '<p><a href="' . $github . '" target="_blank" rel="noopener noreferrer">' . esc_html__( 'GitHub Repository', 'wp-autoplugin' ) . '</a></p>';
+		echo '<h2>' . esc_html__( 'Plugin Information', 'wp-bizerbuilder' ) . '</h2>';
+		echo '<p>' . esc_html__( 'See the GitHub page for details.', 'wp-bizerbuilder' ) . '</p>';
+		echo '<p><a href="' . $github . '" target="_blank" rel="noopener noreferrer">' . esc_html__( 'GitHub Repository', 'wp-bizerbuilder' ) . '</a></p>';
 		echo '</div>';
 
 		exit; // Stop Core from loading the default (wp.org) screen.
@@ -634,8 +634,8 @@ class GitHub_Updater {
 		$result['destination'] = $proper_destination;
 		$activate              = activate_plugin( WP_PLUGIN_DIR . '/' . $this->config['slug'] );
 
-		$fail_message    = __( 'The plugin has been updated, but could not be reactivated. Please reactivate it manually.', 'wp-autoplugin' );
-		$success_message = __( 'Plugin reactivated successfully.', 'wp-autoplugin' );
+		$fail_message    = __( 'The plugin has been updated, but could not be reactivated. Please reactivate it manually.', 'wp-bizerbuilder' );
+		$success_message = __( 'Plugin reactivated successfully.', 'wp-bizerbuilder' );
 
 		echo is_wp_error( $activate ) ? esc_html( $fail_message ) : esc_html( $success_message );
 		return $result;

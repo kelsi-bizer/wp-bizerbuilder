@@ -1,40 +1,40 @@
-# Polish translations for WP-Autoplugin
-# Created by ChatGPT
+# Copyright (C) 2024 Balázs Piller
+# This file is distributed under the same license as the WP-Bizerbuilder plugin.
 msgid ""
 msgstr ""
-"Project-Id-Version: WP-Autoplugin 1.2\n"
-"Report-Msgid-Bugs-To: https://wordpress.org/support/plugin/wp-autoplugin\n"
+"Project-Id-Version: WP-Bizerbuilder 1.0.5\n"
+"Report-Msgid-Bugs-To: https://wordpress.org/support/plugin/wp-bizerbuilder\n"
 "POT-Creation-Date: 2025-08-20T15:48:21+00:00\n"
-"PO-Revision-Date: 2025-01-10 12:00+0000\n"
-"Last-Translator: Imię i Nazwisko <EMAIL@ADDRESS>\n"
-"Language-Team: Polish <pl@li.org>\n"
-"Language: pl_PL\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: Magyar <LL@li.org>\n"
+"Language: \n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Generator: ChatGPT\n"
-"X-Domain: wp-autoplugin\n"
+"X-Generator: WP-CLI 2.11.0\n"
+"X-Domain: wp-bizerbuilder\n"
 
 #. Plugin Name of the plugin
-#: wp-autoplugin.php includes/admin/class-menu.php:41
+#: wp-bizerbuilder.php includes/admin/class-menu.php:41
 #: includes/admin/class-menu.php:42
-msgid "WP-Autoplugin"
-msgstr "WP-Autoplugin"
+msgid "WP-Bizerbuilder"
+msgstr "WP-Bizerbuilder"
 
 #. Description of the plugin
-#: wp-autoplugin.php includes/admin/class-updater.php:47
+#: wp-bizerbuilder.php includes/admin/class-updater.php:47
 msgid "A plugin that generates other plugins on-demand using AI."
-msgstr "Wtyczka generująca inne wtyczki na żądanie przy użyciu SI."
+msgstr "AI alapú bővítmény-generáló bővítmény."
 
 #. Author of the plugin
-#: wp-autoplugin.php
+#: wp-bizerbuilder.php
 msgid "Balázs Piller"
-msgstr "Balázs Piller"
+msgstr "Piller Balázs"
 
 #. Author URI of the plugin
-#: wp-autoplugin.php
-msgid "https://wp-autoplugin.com"
-msgstr "https://wp-autoplugin.com"
+#: wp-bizerbuilder.php
+msgid "https://wp-bizerbuilder.com"
+msgstr "https://wp-bizerbuilder.com"
 
 #: includes/admin/class-action-links.php:42
 msgid "Modify (Patch)"
@@ -44,32 +44,32 @@ msgstr ""
 #: includes/admin/class-menu.php:99
 #, fuzzy
 msgid "Create Extension"
-msgstr "Wygeneruj plan"
+msgstr "Plugin terv generálása"
 
 #: includes/admin/class-action-links.php:63 includes/admin/class-menu.php:107
 #: includes/admin/class-menu.php:108
 #, fuzzy
 msgid "Extend Theme"
-msgstr "Rozszerz"
+msgstr "Kibővítés"
 
 #: includes/admin/class-action-links.php:86
 msgid "Extend"
-msgstr "Rozszerz"
+msgstr "Kibővítés"
 
 #. translators: %s: version number.
 #: includes/admin/class-admin.php:75
-msgid "WP-Autoplugin v%s"
-msgstr "WP-Autoplugin w wersji %s"
+msgid "WP-Bizerbuilder v%s"
+msgstr "WP-Bizerbuilder v%s"
 
 #. translators: %s: model name.
 #: includes/admin/class-admin.php:86
 msgid "Model: %s"
-msgstr "Model: %s"
+msgstr "Modell: %s"
 
 #: includes/admin/class-admin.php:94
 #, fuzzy
 msgid "(Change)"
-msgstr "Zapisz zmiany"
+msgstr "Változtatások mentése"
 
 #: includes/admin/class-admin.php:99
 msgid "Click for token usage breakdown"
@@ -80,90 +80,87 @@ msgstr ""
 #: includes/ajax/class-model.php:41 includes/ajax/class-model.php:82
 #: includes/ajax/class-model.php:120 includes/ajax/class-model.php:171
 msgid "Security check failed."
-msgstr "Sprawdzenie bezpieczeństwa nie powiodło się."
+msgstr "A biztonsági ellenőrzés sikertelen volt."
 
 #: includes/admin/class-bulk-actions.php:51 includes/admin/class-menu.php:180
 #: includes/admin/class-menu.php:223 includes/admin/class-menu.php:251
 msgid "You do not have sufficient permissions to access this page."
-msgstr "Nie masz wystarczających uprawnień, aby uzyskać dostęp do tej strony."
+msgstr "Nincs megfelelő jogosultságod az oldal eléréséhez."
 
 #: includes/admin/class-menu.php:52 includes/admin/class-menu.php:53
 #: views/page-list-plugins.php:30 views/page-list-plugins.php:39
 msgid "Generate New Plugin"
-msgstr "Wygeneruj nową wtyczkę"
+msgstr "Új bővítmény generálása"
 
 #: includes/admin/class-menu.php:61 includes/admin/class-menu.php:62
 msgid "Settings"
-msgstr "Ustawienia"
+msgstr "Beállítások"
 
 #: includes/admin/class-menu.php:71 includes/admin/class-menu.php:72
 msgid "Extend Plugin"
-msgstr "Rozszerz wtyczkę"
+msgstr "Bővítmény továbbfejlesztése"
 
 #: includes/admin/class-menu.php:80 includes/admin/class-menu.php:81
 #: views/page-fix-plugin.php:53
 msgid "Fix Plugin"
-msgstr "Napraw wtyczkę"
+msgstr "Bővítmény javítása"
 
 #: includes/admin/class-menu.php:89 includes/admin/class-menu.php:90
 #: views/page-explain-plugin.php:67
 #, fuzzy
 msgid "Explain Plugin"
-msgstr "Rozszerz wtyczkę"
+msgstr "Bővítmény továbbfejlesztése"
 
 #: includes/admin/class-menu.php:185 includes/admin/class-menu.php:227
 msgid "No plugin specified."
-msgstr "Nie określono wtyczki."
+msgstr "Nincs megadva bővítmény."
 
 #: includes/admin/class-menu.php:198 includes/admin/class-menu.php:239
 msgid "The specified plugin does not exist."
-msgstr "Podana wtyczka nie istnieje."
+msgstr "A megadott bővítmény nem létezik."
 
 #: includes/admin/class-menu.php:255
 #, fuzzy
 msgid "No theme specified."
-msgstr "Nie określono wtyczki."
+msgstr "Nincs megadva bővítmény."
 
 #: includes/admin/class-menu.php:265
 #, fuzzy
 msgid "The specified theme does not exist."
-msgstr "Podana wtyczka nie istnieje."
+msgstr "A megadott bővítmény nem létezik."
 
 #: includes/admin/class-notices.php:44
 msgid ""
 "The <code>DISALLOW_FILE_MODS</code> constant is defined in your wp-"
-"config.php file, which prevents WP-Autoplugin from installing or updating "
+"config.php file, which prevents WP-Bizerbuilder from installing or updating "
 "plugins on your site."
 msgstr ""
-"Stała <code>DISALLOW_FILE_MODS</code> jest zdefiniowana w pliku wp-"
-"config.php, co uniemożliwia WP-Autoplugin instalowanie lub aktualizowanie "
-"wtyczek na Twojej stronie."
 
 #: includes/admin/class-notices.php:68
 msgid "The plugin could not be activated due to a fatal error."
-msgstr "Wtyczka nie mogła zostać aktywowana z powodu krytycznego błędu."
+msgstr "A bővítményt nem lehetett aktiválni végzetes hiba miatt."
 
 #. translators: 1: fix link start tag, 2: fix link end tag
 #: includes/admin/class-notices.php:74
 #, fuzzy
 msgid "You can %1$sfix the error automatically%2$s."
-msgstr "Możesz <a href=\"%s\">automatycznie naprawić ten błąd</a>."
+msgstr "A hibát <a href=\"%s\">automatikusan javíthatod</a>."
 
 #: includes/admin/class-plugin-list-table.php:46
 msgid "Plugin"
-msgstr "Wtyczka"
+msgstr "Bővítmény"
 
 #: includes/admin/class-plugin-list-table.php:84
 msgid "Deactivate"
-msgstr "Dezaktywuj"
+msgstr "Kikapcsolás"
 
 #: includes/admin/class-plugin-list-table.php:87
 msgid "Activate"
-msgstr "Aktywuj"
+msgstr "Bekapcsolás"
 
 #: includes/admin/class-plugin-list-table.php:90
 msgid "Fix"
-msgstr "Napraw"
+msgstr "Javítás"
 
 #: includes/admin/class-plugin-list-table.php:91
 msgid "Modify"
@@ -175,86 +172,84 @@ msgstr ""
 
 #: includes/admin/class-plugin-list-table.php:93
 msgid "Delete"
-msgstr "Usuń"
+msgstr "Törlés"
 
 #: includes/admin/class-plugin-list-table.php:180
 msgid "No plugins found."
-msgstr "Nie znaleziono żadnych wtyczek."
+msgstr "Nincs találat bővítményre."
 
 #: includes/admin/class-plugin-list-table.php:222
 msgid "All"
-msgstr "Wszystkie"
+msgstr "Összes"
 
 #: includes/admin/class-plugin-list-table.php:223
 msgid "Active"
-msgstr "Aktywne"
+msgstr "Aktív"
 
 #: includes/admin/class-plugin-list-table.php:224
 msgid "Inactive"
-msgstr "Nieaktywne"
+msgstr "Inaktív"
 
 #: includes/admin/class-scripts.php:34
 msgid "Please enter a plugin description."
-msgstr "Proszę wprowadzić opis wtyczki."
+msgstr "Kérjük, adj meg egy bővítmény leírást."
 
 #: includes/admin/class-scripts.php:35
 #, fuzzy
 msgid "Generating a plan for your plugin."
-msgstr "Generowanie planu dla Twojej wtyczki"
+msgstr "Bővítmény terv generálása"
 
 #: includes/admin/class-scripts.php:36
 msgid "Error generating the plugin plan."
-msgstr "Błąd podczas generowania planu wtyczki."
+msgstr "Hiba történt a bővítmény terv generálása közben."
 
 #: includes/admin/class-scripts.php:37
 #, fuzzy
 msgid "Generating code."
-msgstr "Generowanie kodu"
+msgstr "Kód generálása"
 
 #: includes/admin/class-scripts.php:38
 msgid "Error generating the plugin code."
-msgstr "Błąd podczas generowania kodu wtyczki."
+msgstr "Hiba történt a bővítmény kód generálása közben."
 
 #: includes/admin/class-scripts.php:39
 msgid "Error creating the plugin."
-msgstr "Błąd podczas tworzenia wtyczki."
+msgstr "Hiba történt a bővítmény létrehozása közben."
 
 #: includes/admin/class-scripts.php:40
 #, fuzzy
 msgid "Installing the plugin."
-msgstr "Instalowanie wtyczki"
+msgstr "Bővítmény telepítése"
 
 #: includes/admin/class-scripts.php:41
 msgid "Plugin successfully installed."
-msgstr "Wtyczka została pomyślnie zainstalowana."
+msgstr "A bővítmény sikeresen telepítve."
 
 #: includes/admin/class-scripts.php:42
 msgid "How to test it?"
-msgstr "Jak ją przetestować?"
+msgstr "Hogyan tesztelheted?"
 
 #: includes/admin/class-scripts.php:43
-msgid "If you notice any issues, use the Fix button in the Autoplugins list."
-msgstr ""
-"Jeśli zauważysz jakiekolwiek problemy, użyj przycisku Napraw na liście "
-"Autoplugins."
+msgid "If you notice any issues, use the Fix button in the Bizerbuilders list."
+msgstr "Ha hibát észlelsz, használd a Javítás gombot az Bizerbuilderok listában."
 
 #: includes/admin/class-scripts.php:44
 msgid "Activate Plugin"
-msgstr "Aktywuj wtyczkę"
+msgstr "Bővítmény bekapcsolása"
 
 #: includes/admin/class-scripts.php:45
 msgid "The plugin code has been updated."
-msgstr "Kod wtyczki został zaktualizowany."
+msgstr "A bővítmény kódja frissítve."
 
 #: includes/admin/class-scripts.php:46
 #, fuzzy
 msgid "Generating explanation..."
-msgstr "Błąd podczas generowania planu."
+msgstr "Hiba történt a terv generálása közben."
 
 #: includes/admin/class-scripts.php:47
 #, fuzzy
 msgid "Error generating explanation."
-msgstr "Błąd podczas generowania planu."
+msgstr "Hiba történt a terv generálása közben."
 
 #: includes/admin/class-scripts.php:48 views/page-explain-plugin.php:51
 msgid "Security Analysis"
@@ -275,7 +270,7 @@ msgstr ""
 #: includes/admin/class-scripts.php:52
 #, fuzzy
 msgid "General Explanation"
-msgstr "Wygeneruj plan"
+msgstr "Plugin terv generálása"
 
 #: includes/admin/class-scripts.php:53
 msgid "Explanation copied to clipboard!"
@@ -287,34 +282,35 @@ msgstr ""
 
 #: includes/admin/class-scripts.php:55
 msgid "Please describe the changes you want to make to the plugin."
-msgstr "Proszę opisać zmiany, które chcesz wprowadzić do wtyczki."
+msgstr ""
+"Kérjük, írd le, milyen változtatásokat szeretnél végrehajtani a bővítményen."
 
 #: includes/admin/class-scripts.php:56
 msgid "Error generating the development plan."
-msgstr "Błąd podczas generowania planu rozwoju."
+msgstr "Hiba történt a fejlesztési terv generálása közben."
 
 #: includes/admin/class-scripts.php:57
 #, fuzzy
 msgid "Generating the extended plugin code."
-msgstr "Generowanie kodu rozszerzonej wtyczki"
+msgstr "A bővítmény kibővített kódjának generálása"
 
 #: includes/admin/class-scripts.php:58
 msgid "Error generating the extended code."
-msgstr "Błąd podczas generowania rozszerzonego kodu."
+msgstr "Hiba történt a bővített kód generálása közben."
 
 #: includes/admin/class-scripts.php:59
 msgid "Error creating the extended plugin."
-msgstr "Błąd podczas tworzenia rozszerzonej wtyczki."
+msgstr "Hiba történt a kibővített bővítmény létrehozása közben."
 
 #: includes/admin/class-scripts.php:60
 #, fuzzy
 msgid "Creating the extension plugin."
-msgstr "Tworzenie wtyczki"
+msgstr "Bővítmény létrehozása"
 
 #: includes/admin/class-scripts.php:61
 #, fuzzy
 msgid "Error activating the plugin."
-msgstr "Błąd podczas tworzenia wtyczki."
+msgstr "Hiba történt a bővítmény létrehozása közben."
 
 #: includes/admin/class-scripts.php:62
 msgid "Extracting hooks, please wait..."
@@ -327,22 +323,22 @@ msgstr ""
 #: includes/admin/class-scripts.php:134
 #, fuzzy
 msgid "A simple contact form with honeypot spam protection."
-msgstr "Prosty formularz kontaktowy z honeypotem w celu ochrony przed spamem"
+msgstr "Egyszerű kapcsolatfelvételi űrlap spam védelemmel"
 
 #: includes/admin/class-scripts.php:135
 #, fuzzy
 msgid "A custom post type for testimonials."
-msgstr "Niestandardowy typ wpisu dla referencji (testimonials)"
+msgstr "Egyedi bejegyzéstípus értékelésekhez"
 
 #: includes/admin/class-scripts.php:136
 #, fuzzy
 msgid "A widget that displays recent posts."
-msgstr "Widżet wyświetlający najnowsze wpisy"
+msgstr "Widget, a legújabb bejegyzések megjelenítéséhez"
 
 #: includes/admin/class-scripts.php:137
 #, fuzzy
 msgid "A simple image compression tool."
-msgstr "Proste narzędzie do kompresji obrazów"
+msgstr "Egyszerű képtömörítő eszköz"
 
 #: includes/admin/class-scripts.php:385 views/footer-modal.php:161
 msgid "No token usage data available yet."
@@ -363,7 +359,7 @@ msgstr ""
 #: includes/admin/class-scripts.php:389
 #, fuzzy
 msgid "An error occurred while saving models."
-msgstr "Błąd podczas zapisywania modelu"
+msgstr "Hiba történt a modell mentése közben."
 
 #: includes/ajax/class-ajax.php:95 includes/ajax/class-hooks-extender.php:41
 #: includes/ajax/class-hooks-extender.php:92
@@ -375,7 +371,7 @@ msgstr "Błąd podczas zapisywania modelu"
 #: includes/ajax/class-theme-extender.php:174
 #, fuzzy
 msgid "You are not allowed to access this page."
-msgstr "Nie masz wystarczających uprawnień, aby uzyskać dostęp do tej strony."
+msgstr "Nincs megfelelő jogosultságod az oldal eléréséhez."
 
 #: includes/ajax/class-ajax.php:108
 msgid "Invalid AJAX action."
@@ -386,9 +382,8 @@ msgstr ""
 #: includes/ajax/class-generator.php:241
 #: includes/ajax/class-hooks-extender.php:171
 #: includes/ajax/class-theme-extender.php:191
-#, fuzzy
 msgid "Invalid input data."
-msgstr "Nieprawidłowe dane modelu"
+msgstr ""
 
 #: includes/ajax/class-extender.php:206 includes/ajax/class-fixer.php:257
 #: includes/ajax/class-generator.php:125
@@ -400,17 +395,17 @@ msgstr ""
 #: includes/ajax/class-fixer.php:200
 #, fuzzy
 msgid "Invalid plugin path."
-msgstr "Nieprawidłowe dane modelu"
+msgstr "Bővítmény telepítése"
 
 #: includes/ajax/class-generator.php:58
 #, fuzzy
 msgid "Failed to decode the generated plan: "
-msgstr "Przejrzyj lub edytuj wygenerowany plan:"
+msgstr "Nézd át vagy szerkeszd a generált tervet:"
 
 #: includes/ajax/class-generator.php:256
 #, fuzzy
 msgid "Failed to decode the review result."
-msgstr "Przejrzyj lub edytuj wygenerowany plan:"
+msgstr "Nézd át vagy szerkeszd a generált tervet:"
 
 #: includes/ajax/class-hooks-extender.php:46
 #: includes/ajax/class-hooks-extender.php:97
@@ -427,47 +422,45 @@ msgstr ""
 #: includes/ajax/class-theme-extender.php:91
 #, fuzzy
 msgid "Failed to decode the generated plan."
-msgstr "Przejrzyj lub edytuj wygenerowany plan:"
+msgstr "Nézd át vagy szerkeszd a generált tervet:"
 
 #: includes/ajax/class-hooks-extender.php:237
 #, fuzzy
 msgid "No plugin file specified."
-msgstr "Nie określono wtyczki."
+msgstr "Nincs megadva bővítmény."
 
 #: includes/ajax/class-model.php:46
-#, fuzzy
 msgid "Invalid model data."
-msgstr "Nieprawidłowe dane modelu"
+msgstr ""
 
 #: includes/ajax/class-model.php:70
 #, fuzzy
 msgid "Model added successfully."
-msgstr "Model został pomyślnie dodany"
+msgstr "A bővítmény sikeresen újraaktiválva."
 
 #: includes/ajax/class-model.php:92
-#, fuzzy
 msgid "Invalid model index."
-msgstr "Nieprawidłowy indeks modelu"
+msgstr ""
 
 #: includes/ajax/class-model.php:104
 #, fuzzy
 msgid "Model removed successfully."
-msgstr "Model został pomyślnie usunięty"
+msgstr "A bővítmény sikeresen újraaktiválva."
 
 #: includes/ajax/class-model.php:125
 #, fuzzy
 msgid "No model specified."
-msgstr "Nie określono wtyczki."
+msgstr "Nincs megadva bővítmény."
 
 #: includes/ajax/class-model.php:151
 #, fuzzy
 msgid "Invalid model specified."
-msgstr "Nieprawidłowy indeks modelu"
+msgstr "Nincs megadva bővítmény."
 
 #: includes/ajax/class-model.php:157
 #, fuzzy
 msgid "Model changed successfully."
-msgstr "Model został pomyślnie dodany"
+msgstr "A bővítmény sikeresen újraaktiválva."
 
 #: includes/ajax/class-model.php:180
 msgid "Default model is required."
@@ -475,19 +468,18 @@ msgstr ""
 
 #. Translators: %s: model name.
 #: includes/ajax/class-model.php:209
-#, fuzzy
 msgid "Invalid model specified: %s"
-msgstr "Nieprawidłowy indeks modelu"
+msgstr ""
 
 #: includes/ajax/class-model.php:219
 #, fuzzy
 msgid "Models updated successfully."
-msgstr "Model został pomyślnie dodany"
+msgstr "A bővítmény sikeresen újraaktiválva."
 
 #: includes/ajax/class-theme-extender.php:47
 #, fuzzy
 msgid "No theme slug specified."
-msgstr "Nie określono wtyczki."
+msgstr "Nincs megadva bővítmény."
 
 #: includes/ajax/class-theme-extender.php:72
 msgid "No hooks found in the theme."
@@ -495,7 +487,7 @@ msgstr ""
 
 #: includes/api/class-custom-api.php:111
 msgid "Error communicating with the API."
-msgstr "Błąd podczas komunikacji z API."
+msgstr "Hiba történt az API-val való kommunikáció közben."
 
 #: includes/class-github-updater.php:409
 msgid "Plugin Information"
@@ -514,12 +506,12 @@ msgid ""
 "The plugin has been updated, but could not be reactivated. Please reactivate "
 "it manually."
 msgstr ""
-"Wtyczka została zaktualizowana, ale nie można jej ponownie aktywować. Proszę "
-"aktywować ją ręcznie."
+"A bővítmény frissítve lett, de nem sikerült újraaktiválni. Kérlek, aktiváld "
+"újra kézzel."
 
 #: includes/class-github-updater.php:635
 msgid "Plugin reactivated successfully."
-msgstr "Wtyczka została pomyślnie ponownie aktywowana."
+msgstr "A bővítmény sikeresen újraaktiválva."
 
 #: includes/class-hooks-extender.php:185
 msgid "(No custom hooks found in the theme code.)"
@@ -538,23 +530,21 @@ msgstr ""
 #: includes/class-plugin-installer.php:73
 #, fuzzy
 msgid "Error updating plugin file: file does not exist."
-msgstr "Podana wtyczka nie istnieje."
+msgstr "A megadott bővítmény nem létezik."
 
 #: includes/class-plugin-installer.php:86
 #, fuzzy
 msgid "Error creating plugin file."
-msgstr "Błąd podczas tworzenia wtyczki."
+msgstr "Hiba történt a bővítmény létrehozása közben."
 
 #: includes/class-plugin-installer.php:206
-#, fuzzy
 msgid "Invalid directory path."
-msgstr "Nieprawidłowe dane modelu"
+msgstr ""
 
 #: includes/class-plugin-installer.php:221
 #: includes/class-plugin-installer.php:312
-#, fuzzy
 msgid "Invalid file path."
-msgstr "Nieprawidłowe dane modelu"
+msgstr ""
 
 #. Translators: %s: file path.
 #: includes/class-plugin-installer.php:228
@@ -565,12 +555,12 @@ msgstr ""
 #: includes/class-plugin-installer.php:240
 #, fuzzy
 msgid "Error creating file: %s"
-msgstr "Błąd podczas tworzenia wtyczki."
+msgstr "Hiba történt a bővítmény létrehozása közben."
 
 #: includes/class-plugin-installer.php:263
 #, fuzzy
 msgid "No main plugin file found."
-msgstr "Nie znaleziono żadnych wtyczek."
+msgstr "Nincs találat bővítményre."
 
 #: includes/class-plugin-installer.php:285
 msgid "Plugin modification is disabled."
@@ -579,7 +569,7 @@ msgstr ""
 #: includes/class-plugin-installer.php:304
 #, fuzzy
 msgid "Target plugin directory does not exist."
-msgstr "Podana wtyczka nie istnieje."
+msgstr "A megadott bővítmény nem létezik."
 
 #. Translators: %s: file path.
 #: includes/class-plugin-installer.php:323
@@ -596,33 +586,33 @@ msgstr ""
 #: includes/class-plugin-installer.php:443
 #, fuzzy
 msgid "Plugin not found."
-msgstr "Nie znaleziono żadnych wtyczek."
+msgstr "Nincs találat bővítményre."
 
 #: includes/class-plugin-installer.php:407
 #, fuzzy
 msgid "Plugin activated successfully."
-msgstr "Wtyczka została pomyślnie ponownie aktywowana."
+msgstr "A bővítmény sikeresen újraaktiválva."
 
 #: includes/class-plugin-installer.php:428
 #, fuzzy
 msgid "Plugin deactivated successfully."
-msgstr "Wtyczka została pomyślnie ponownie aktywowana."
+msgstr "A bővítmény sikeresen újraaktiválva."
 
 #. Translators: %s: error message.
 #: includes/class-plugin-installer.php:452
 #, fuzzy
 msgid "Error deleting plugin: %s"
-msgstr "Błąd podczas aktywacji wtyczki: %s"
+msgstr "Hiba történt a bővítmény aktiválása közben: %s"
 
 #: includes/class-plugin-installer.php:456
 #, fuzzy
 msgid "Plugin deleted successfully."
-msgstr "Wtyczka została pomyślnie ponownie aktywowana."
+msgstr "A bővítmény sikeresen újraaktiválva."
 
 #: views/footer-modal.php:5
 #, fuzzy
 msgid "Select Models"
-msgstr "Niestandardowe modele"
+msgstr "Egyedi modell hozzáadása"
 
 #: views/footer-modal.php:10
 msgid "Default Model:"
@@ -632,8 +622,9 @@ msgstr ""
 #: views/footer-modal.php:96 views/footer-modal.php:130
 #: views/page-settings.php:64 views/page-settings.php:88
 #: views/page-settings.php:151 views/page-settings.php:241
+#, fuzzy
 msgid "Custom Models"
-msgstr "Niestandardowe modele"
+msgstr "Egyedi modell hozzáadása"
 
 #: views/footer-modal.php:44
 msgid "Planner Model:"
@@ -647,7 +638,7 @@ msgstr ""
 #: views/footer-modal.php:78
 #, fuzzy
 msgid "Coder Model:"
-msgstr "Niestandardowe modele"
+msgstr "Egyedi modell hozzáadása"
 
 #: views/footer-modal.php:112
 msgid "Reviewer Model:"
@@ -656,7 +647,7 @@ msgstr ""
 #: views/footer-modal.php:146
 #, fuzzy
 msgid "Save Models"
-msgstr "Model"
+msgstr "Modell"
 
 #: views/footer-modal.php:147
 msgid "Cancel"
@@ -680,14 +671,14 @@ msgstr ""
 #: views/page-explain-plugin.php:37
 #, fuzzy
 msgid "Explain This Plugin: %s"
-msgstr "Rozszerz tę wtyczkę: %s"
+msgstr "Bővítés: %s"
 
 #: views/page-explain-plugin.php:40
 #, fuzzy
 msgid ""
 "Enter a specific question about this plugin or leave blank for a general "
 "explanation:"
-msgstr "Podaj opis wtyczki, którą chcesz wygenerować:"
+msgstr "Add meg a létrehozni kívánt bővítmény leírását:"
 
 #: views/page-explain-plugin.php:41
 msgid ""
@@ -723,7 +714,7 @@ msgstr ""
 #: views/page-explain-plugin.php:80
 #, fuzzy
 msgid "General explanation"
-msgstr "Wygeneruj plan"
+msgstr "Plugin terv generálása"
 
 #: views/page-explain-plugin.php:86
 msgid "Ask Another Question"
@@ -741,7 +732,7 @@ msgstr ""
 #: views/page-extend-hooks.php:24
 #, fuzzy
 msgid "Create Extension for: %s"
-msgstr "Rozszerzona wtyczka: %s"
+msgstr "Kibővített bővítmény: %s"
 
 #: views/page-extend-hooks.php:27
 msgid "Extracting plugin hooks, please wait..."
@@ -761,57 +752,57 @@ msgstr ""
 #, fuzzy
 msgid "Describe the extension you would like to create:"
 msgstr ""
-"Opisz zmiany, które chciałbyś wprowadzić do wtyczki. Dodaj jak najwięcej "
-"szczegółów:"
+"Írd le a bővítményen végrehajtani kívánt módosításokat. Minél részletesebb "
+"leírást adj meg:"
 
 #: views/page-extend-hooks.php:44 views/page-extend-theme.php:48
 #, fuzzy
 msgid "Generate Extension Plan"
-msgstr "Wygeneruj plan"
+msgstr "Plugin terv generálása"
 
 #: views/page-extend-hooks.php:51 views/page-extend-theme.php:55
 #, fuzzy
 msgid "Generated Extension Plan"
-msgstr "Wygenerowany plan"
+msgstr "Generált terv"
 
 #: views/page-extend-hooks.php:53 views/page-extend-theme.php:57
 #, fuzzy
 msgid "Review or edit the generated plan for the extension plugin:"
-msgstr "Przejrzyj lub edytuj wygenerowany plan:"
+msgstr "Nézd át vagy szerkeszd a generált tervet:"
 
 #: views/page-extend-hooks.php:56 views/page-extend-theme.php:60
 #, fuzzy
 msgid "« Edit Description"
-msgstr "&laquo; Edytuj opis"
+msgstr "&laquo; Leírás szerkesztése"
 
 #: views/page-extend-hooks.php:57 views/page-extend-theme.php:61
 #, fuzzy
 msgid "Generate Extension Code"
-msgstr "Wygeneruj kod wtyczki"
+msgstr "Bővítménykód generálása"
 
 #. translators: %s: theme/plugin name.
 #: views/page-extend-hooks.php:64 views/page-extend-theme.php:68
 #, fuzzy
 msgid "Extension Plugin for: %s"
-msgstr "Rozszerzona wtyczka: %s"
+msgstr "Kibővített bővítmény: %s"
 
 #: views/page-extend-hooks.php:66 views/page-extend-theme.php:70
 #, fuzzy
 msgid "Review the generated code before saving:"
-msgstr "Przejrzyj lub edytuj wygenerowany plan:"
+msgstr "Nézd át vagy szerkeszd a generált tervet:"
 
 #: views/page-extend-hooks.php:79 views/page-extend-plugin.php:81
 #: views/page-extend-theme.php:83 views/page-fix-plugin.php:83
 #: views/page-generate-plugin.php:65
 #, fuzzy
 msgid "Generating files..."
-msgstr "Generowanie kodu"
+msgstr "Kód generálása"
 
 #: views/page-extend-hooks.php:89 views/page-extend-plugin.php:99
 #: views/page-extend-theme.php:93 views/page-fix-plugin.php:101
 #: views/page-generate-plugin.php:105
 msgid "Warning:"
-msgstr "Ostrzeżenie:"
+msgstr "Figyelmeztetés:"
 
 #: views/page-extend-hooks.php:89 views/page-extend-theme.php:93
 #: views/page-generate-plugin.php:105
@@ -819,65 +810,65 @@ msgid ""
 "AI-generated code may be unstable or insecure; use only after careful review "
 "and testing."
 msgstr ""
-"Kod wygenerowany przez SI może być niestabilny lub niebezpieczny; używaj go "
-"tylko po dokładnym sprawdzeniu i przetestowaniu."
+"Az AI által generált kód instabil lehet és biztonsági hibákat tartalmazhat. "
+"Csak alapos kódellenőrzés és tesztelés után használd."
 
 #: views/page-extend-hooks.php:93 views/page-extend-theme.php:97
 #, fuzzy
 msgid "« Edit Plan"
-msgstr "&laquo; Edytuj plan"
+msgstr "&laquo; Terv szerkesztése"
 
 #: views/page-extend-hooks.php:94 views/page-extend-theme.php:98
 #, fuzzy
 msgid "Save Extension Plugin"
-msgstr "Rozszerz wtyczkę"
+msgstr "Bővítmény továbbfejlesztése"
 
 #. translators: %s: error message.
 #: views/page-extend-plugin.php:37 views/page-fix-plugin.php:39
 msgid "Error while activating the plugin: %s"
-msgstr "Błąd podczas aktywacji wtyczki: %s"
+msgstr "Hiba történt a bővítmény aktiválása közben: %s"
 
 #. translators: %s: plugin name.
 #: views/page-extend-plugin.php:46
 #, fuzzy
 msgid "Modify This Plugin: %s"
-msgstr "Napraw tę wtyczkę: %s"
+msgstr "Javítás: %s"
 
 #: views/page-extend-plugin.php:49
 msgid ""
 "Describe the changes you would like to make to the plugin. Include as much "
 "detail as possible:"
 msgstr ""
-"Opisz zmiany, które chciałbyś wprowadzić do wtyczki. Dodaj jak najwięcej "
-"szczegółów:"
+"Írd le a bővítményen végrehajtani kívánt módosításokat. Minél részletesebb "
+"leírást adj meg:"
 
 #: views/page-extend-plugin.php:51 views/page-generate-plugin.php:26
 msgid "Generate Plan"
-msgstr "Wygeneruj plan"
+msgstr "Plugin terv generálása"
 
 #: views/page-extend-plugin.php:57 views/page-fix-plugin.php:59
 #: views/page-generate-plugin.php:31
 msgid "Generated Plan"
-msgstr "Wygenerowany plan"
+msgstr "Generált terv"
 
 #: views/page-extend-plugin.php:60 views/page-fix-plugin.php:62
 #: views/page-generate-plugin.php:34
 msgid "Review or edit the generated plan:"
-msgstr "Przejrzyj lub edytuj wygenerowany plan:"
+msgstr "Nézd át vagy szerkeszd a generált tervet:"
 
 #: views/page-extend-plugin.php:63 views/page-fix-plugin.php:65
 msgid "&laquo; Edit Issue"
-msgstr "&laquo; Edytuj problem"
+msgstr "&laquo; Hiba szerkesztése"
 
 #: views/page-extend-plugin.php:64 views/page-fix-plugin.php:66
 #: views/page-generate-plugin.php:41
 msgid "Generate Plugin Code"
-msgstr "Wygeneruj kod wtyczki"
+msgstr "Bővítménykód generálása"
 
 #. translators: %s: plugin name.
 #: views/page-extend-plugin.php:71
 msgid "Extended Plugin: %s"
-msgstr "Rozszerzona wtyczka: %s"
+msgstr "Kibővített bővítmény: %s"
 
 #: views/page-extend-plugin.php:74
 #, fuzzy
@@ -885,27 +876,27 @@ msgid ""
 "The plugin has been modified successfully. You can review the changes before "
 "activating it:"
 msgstr ""
-"Wtyczka została pomyślnie naprawiona. Możesz przejrzeć zmiany przed jej "
-"aktywowaniem:"
+"A bővítmény sikeresen javítva. Aktiválás előtt áttekintheted a "
+"változtatásokat:"
 
 #: views/page-extend-plugin.php:99 views/page-fix-plugin.php:101
 msgid "This plugin is active, changes will take effect immediately."
-msgstr "Ta wtyczka jest aktywna, zmiany zostaną wprowadzone natychmiast."
+msgstr "Ez a bővítmény aktív, a változások azonnal érvénybe lépnek."
 
 #: views/page-extend-plugin.php:104 views/page-fix-plugin.php:106
 #: views/page-generate-plugin.php:109
 msgid "&laquo; Edit Plan"
-msgstr "&laquo; Edytuj plan"
+msgstr "&laquo; Terv szerkesztése"
 
 #: views/page-extend-plugin.php:105 views/page-fix-plugin.php:107
 msgid "Save Changes"
-msgstr "Zapisz zmiany"
+msgstr "Változtatások mentése"
 
 #. translators: %s: theme name.
 #: views/page-extend-theme.php:28
 #, fuzzy
 msgid "Extend This Theme: %s"
-msgstr "Rozszerz tę wtyczkę: %s"
+msgstr "Bővítés: %s"
 
 #: views/page-extend-theme.php:31
 msgid "Extracting theme hooks, please wait..."
@@ -915,68 +906,68 @@ msgstr ""
 #, fuzzy
 msgid "Describe the extension you would like to make to the theme:"
 msgstr ""
-"Opisz zmiany, które chciałbyś wprowadzić do wtyczki. Dodaj jak najwięcej "
-"szczegółów:"
+"Írd le a bővítményen végrehajtani kívánt módosításokat. Minél részletesebb "
+"leírást adj meg:"
 
 #: views/page-fix-plugin.php:32
 #, fuzzy
 msgid "Unknown Plugin"
-msgstr "Wtyczka"
+msgstr "Bővítmény"
 
 #. translators: %s: plugin name.
 #: views/page-fix-plugin.php:48
 msgid "Fix This Plugin: %s"
-msgstr "Napraw tę wtyczkę: %s"
+msgstr "Javítás: %s"
 
 #: views/page-fix-plugin.php:51
 msgid ""
 "Describe the issue you are experiencing with the plugin. Include as much "
 "detail as possible and any error messages you are seeing:"
 msgstr ""
-"Opisz problem, jaki napotykasz w tej wtyczce. Podaj jak najwięcej szczegółów "
-"oraz ewentualne komunikaty o błędach, które widzisz:"
+"Írd le a bővítmény használata közben tapasztalt problémát. Minél "
+"részletesebb leírást adj meg, és tüntesd fel a hibaüzeneteket is:"
 
 #. translators: %s: plugin name.
 #: views/page-fix-plugin.php:73
 msgid "Fixed Plugin: %s"
-msgstr "Naprawiona wtyczka: %s"
+msgstr "Javított bővítmény: %s"
 
 #: views/page-fix-plugin.php:76
 msgid ""
 "The plugin has been fixed successfully. You can review the changes before "
 "activating it:"
 msgstr ""
-"Wtyczka została pomyślnie naprawiona. Możesz przejrzeć zmiany przed jej "
-"aktywowaniem:"
+"A bővítmény sikeresen javítva. Aktiválás előtt áttekintheted a "
+"változtatásokat:"
 
 #: views/page-generate-plugin.php:21
 msgid "Generate Plugin"
-msgstr "Wygeneruj wtyczkę"
+msgstr "Bővítmény generálása"
 
 #: views/page-generate-plugin.php:24
 msgid "Enter a description of the plugin you want to generate:"
-msgstr "Podaj opis wtyczki, którą chcesz wygenerować:"
+msgstr "Add meg a létrehozni kívánt bővítmény leírását:"
 
 #: views/page-generate-plugin.php:40
 msgid "&laquo; Edit Description"
-msgstr "&laquo; Edytuj opis"
+msgstr "&laquo; Leírás szerkesztése"
 
 #: views/page-generate-plugin.php:47
 msgid "Generated Plugin Code"
-msgstr "Wygenerowany kod wtyczki"
+msgstr "Generált bővítménykód"
 
 #: views/page-generate-plugin.php:53
 msgid ""
 "The plugin code has been generated successfully. You can review and edit the "
 "plugin file before activating it:"
 msgstr ""
-"Kod wtyczki został pomyślnie wygenerowany. Możesz go przejrzeć i edytować "
-"przed aktywacją:"
+"A bővítménykód sikeresen generálva. Aktiválás előtt áttekintheted és "
+"szerkesztheted a bővítmény fájlt:"
 
 #: views/page-generate-plugin.php:59
 #, fuzzy
 msgid "You can review and edit the generated code before installing:"
-msgstr "Przejrzyj lub edytuj wygenerowany plan:"
+msgstr "Nézd át vagy szerkeszd a generált tervet:"
 
 #: views/page-generate-plugin.php:70
 msgid "AI is reviewing the complete codebase..."
@@ -1000,50 +991,51 @@ msgstr ""
 
 #: views/page-generate-plugin.php:110
 msgid "Install Plugin"
-msgstr "Zainstaluj wtyczkę"
+msgstr "Bővítmény telepítése"
 
 #: views/page-list-plugins.php:29
-msgid "Autoplugins"
-msgstr "Autoplugins"
+msgid "Bizerbuilders"
+msgstr "Bizerbuilderok"
 
 #: views/page-list-plugins.php:37
-msgid "You don't have any autoplugins yet."
-msgstr "Nie masz jeszcze żadnych autowtyczek."
+msgid "You don't have any bizerbuilders yet."
+msgstr "Még nincsenek bizerbuilderok."
 
 #: views/page-list-plugins.php:38
 msgid ""
-"Autoplugins are regular plugins, but they are generated by AI. You can "
+"Bizerbuilders are regular plugins, but they are generated by AI. You can "
 "manage them just like any other plugin. They will be listed here for your "
 "convenience."
 msgstr ""
-"Autoplugins to zwykłe wtyczki, ale generowane przez SI. Możesz nimi "
-"zarządzać tak samo jak innymi wtyczkami. Zostaną wyświetlone tutaj dla "
-"Twojej wygody."
+"Az bizerbuilderok hagyományos bővítmények, amelyeket mesterséges intelligencia "
+"hozott létre. Ugyanúgy kezelheted őket, mint bármely más bővítményt. Itt fel "
+"lesznek sorolva, hogy könnyen elérhetőek legyenek."
 
 #: views/page-settings.php:23
-msgid "WP-Autoplugin Settings"
-msgstr "Ustawienia WP-Autoplugin"
+msgid "WP-Bizerbuilder Settings"
+msgstr "WP-Bizerbuilder beállítások"
 
 #: views/page-settings.php:32
 msgid "OpenAI API Key"
-msgstr "Klucz API OpenAI"
+msgstr "OpenAI API-kulcs"
 
 #: views/page-settings.php:36
 msgid "Anthropic API Key"
-msgstr "Klucz API Anthropic"
+msgstr "Anthropic API-kulcs"
 
 #: views/page-settings.php:40
 msgid "Google Gemini API Key"
-msgstr "Klucz API Google Gemini"
+msgstr "Google Gemini API-kulcs"
 
 #: views/page-settings.php:44
+#, fuzzy
 msgid "xAI API Key"
-msgstr "Klucz API xAI"
+msgstr "OpenAI API-kulcs"
 
 #: views/page-settings.php:75
 #, fuzzy
 msgid "Default Model"
-msgstr "Niestandardowe modele"
+msgstr "Egyedi modell hozzáadása"
 
 #: views/page-settings.php:98 views/page-settings.php:190
 msgid "Show specialized model settings"
@@ -1062,7 +1054,7 @@ msgstr ""
 #: views/page-settings.php:121
 #, fuzzy
 msgid "Coder Model"
-msgstr "Niestandardowe modele"
+msgstr "Egyedi modell hozzáadása"
 
 #: views/page-settings.php:124
 msgid ""
@@ -1082,7 +1074,7 @@ msgstr ""
 #: views/page-settings.php:138
 #, fuzzy
 msgid "Generate Plugins"
-msgstr "Wygeneruj wtyczkę"
+msgstr "Bővítmény generálása"
 
 #: views/page-settings.php:142
 msgid "Simple plugin mode (single-file plugins)"
@@ -1098,37 +1090,37 @@ msgstr ""
 
 #: views/page-settings.php:159
 msgid "Model Name (User-defined Label)"
-msgstr "Nazwa modelu (Etykieta zdefiniowana przez użytkownika)"
+msgstr "Modell neve (Felhasználó által definiált címke)"
 
 #: views/page-settings.php:160
 msgid "API Endpoint URL"
-msgstr "Adres URL punktu końcowego API"
+msgstr "API végpont URL"
 
 #: views/page-settings.php:161
 msgid "\"model\" Parameter Value"
-msgstr "Wartość parametru \"model\""
+msgstr "A \"model\" paraméter értéke"
 
 #: views/page-settings.php:162 views/page-settings.php:207
 msgid "API Key"
-msgstr "Klucz API"
+msgstr "API-kulcs"
 
 #: views/page-settings.php:163
 msgid "Additional Headers (one per line, name=value)"
-msgstr "Dodatkowe nagłówki (jeden na linię, nazwa=wartość)"
+msgstr "További fejlécadatok (soronként egy, név=érték)"
 
 #: views/page-settings.php:164
 msgid "Add Custom Model"
-msgstr "Dodaj niestandardowy model"
+msgstr "Egyedi modell hozzáadása"
 
 #: views/page-settings.php:170
 msgid ""
-"Add any custom models you want to use with WP-Autoplugin. These models will "
+"Add any custom models you want to use with WP-Bizerbuilder. These models will "
 "be available in the model selection dropdown. The API must be compatible "
 "with the OpenAI API."
 msgstr ""
-"Dodaj dowolne niestandardowe modele, których chcesz używać z WP-Autoplugin. "
-"Te modele będą dostępne w menu wyboru modelu. API musi być zgodne z API "
-"OpenAI."
+"Adj hozzá bármilyen egyedi modellt, amelyet a WP-Bizerbuilder-nel szeretnél "
+"használni. Ezek a modellek elérhetőek lesznek a modellválasztó legördülő "
+"menüben. Az API-nak kompatibilisnek kell lennie az OpenAI API-val."
 
 #: views/page-settings.php:193 views/page-settings.php:199
 msgid "Hide specialized model settings"
@@ -1136,7 +1128,7 @@ msgstr ""
 
 #: views/page-settings.php:204
 msgid "Details"
-msgstr "Szczegóły"
+msgstr "Részletek"
 
 #: views/page-settings.php:205
 msgid "URL"
@@ -1144,200 +1136,198 @@ msgstr "URL"
 
 #: views/page-settings.php:206
 msgid "Model Parameter"
-msgstr "Parametr modelu"
+msgstr "Modell paraméter"
 
 #: views/page-settings.php:208
 msgid "Headers"
-msgstr "Nagłówki"
+msgstr "Fejlécek"
 
 #: views/page-settings.php:209
 msgid "Remove"
-msgstr "Usuń"
+msgstr "Eltávolítás"
 
 #: views/page-settings.php:210
 msgid "Please fill out all required fields."
-msgstr "Proszę wypełnić wszystkie wymagane pola."
+msgstr "Kérjük, töltsd ki az összes kötelező mezőt."
 
 #: views/page-settings.php:211
 msgid "Are you sure you want to remove this model?"
-msgstr "Czy na pewno chcesz usunąć ten model?"
+msgstr "Biztosan el akarod távolítani ezt a modellt?"
 
 #: views/page-settings.php:212
 msgid "Error saving model"
-msgstr "Błąd podczas zapisywania modelu"
+msgstr "Hiba történt a modell mentése közben."
 
 #, fuzzy
 #~ msgid "Extend Plugin with Hooks"
-#~ msgstr "Rozszerz wtyczkę"
+#~ msgstr "Bővítmény továbbfejlesztése"
 
 #~ msgid "Error generating the plan."
-#~ msgstr "Błąd podczas generowania planu."
+#~ msgstr "Hiba történt a terv generálása közben."
 
 #~ msgid "Error creating the fixed plugin."
-#~ msgstr "Błąd podczas tworzenia naprawionej wtyczki."
+#~ msgstr "Hiba történt a javított bővítmény létrehozása közben."
 
 #, fuzzy
 #~ msgid "Generating the fixed plugin code."
-#~ msgstr "Generowanie kodu naprawionej wtyczki"
+#~ msgstr "Javított bővítménykód generálása"
 
 #~ msgid "Error generating the fixed code."
-#~ msgstr "Błąd podczas generowania naprawionego kodu."
+#~ msgstr "Hiba történt a javított kód generálása közben."
 
 #, fuzzy
 #~ msgid "Creating the plugin."
-#~ msgstr "Tworzenie wtyczki"
+#~ msgstr "Bővítmény létrehozása"
 
 #, fuzzy
 #~ msgid "Generating the extension plugin code."
-#~ msgstr "Generowanie kodu rozszerzonej wtyczki"
+#~ msgstr "A bővítmény kibővített kódjának generálása"
 
 #, fuzzy
 #~ msgid "Error generating the extension code."
-#~ msgstr "Błąd podczas generowania rozszerzonego kodu."
+#~ msgstr "Hiba történt a bővített kód generálása közben."
 
 #, fuzzy
 #~ msgid "Error creating the extension plugin."
-#~ msgstr "Błąd podczas tworzenia rozszerzonej wtyczki."
+#~ msgstr "Hiba történt a kibővített bővítmény létrehozása közben."
 
 #, fuzzy
 #~ msgid "The extension plugin has been created."
-#~ msgstr "Kod wtyczki został zaktualizowany."
+#~ msgstr "A bővítmény kódja frissítve."
 
 #, fuzzy
 #~ msgid "Extend This Plugin with Hooks: %s"
-#~ msgstr "Rozszerz tę wtyczkę: %s"
+#~ msgstr "Bővítés: %s"
 
 #, fuzzy
 #~ msgid "Plugin Name:"
-#~ msgstr "Wtyczka"
+#~ msgstr "Bővítmény"
 
 #, fuzzy
 #~ msgid ""
 #~ "The extension plugin code has been generated. Review it before saving:"
 #~ msgstr ""
-#~ "Kod wtyczki został pomyślnie wygenerowany. Możesz go przejrzeć i edytować "
-#~ "przed aktywacją:"
+#~ "A bővítménykód sikeresen generálva. Aktiválás előtt áttekintheted és "
+#~ "szerkesztheted a bővítmény fájlt:"
 
 #~ msgid ""
 #~ "The plugin has been extended successfully. You can review the changes "
 #~ "before activating it:"
 #~ msgstr ""
-#~ "Wtyczka została pomyślnie rozszerzona. Możesz przejrzeć wprowadzone "
-#~ "zmiany przed jej aktywowaniem:"
+#~ "A bővítmény sikeresen kibővítve. Aktiválás előtt áttekintheted a "
+#~ "változtatásokat:"
 
 #~ msgid "Look for other issues in the plugin code as well"
-#~ msgstr "Wyszukaj również inne problemy w kodzie wtyczki"
+#~ msgstr "Keressen más hibákat is a bővítmény kódban"
 
 #~ msgid "Focus on the issue at hand"
-#~ msgstr "Skup się na bieżącym problemie"
+#~ msgstr "Csak a megadott problémára koncentráljon"
 
 #~ msgid "A shortcode that shows a random quote"
-#~ msgstr "Kod skrócony wyświetlający losowy cytat"
+#~ msgstr "Egy shortcode, véletlenszerű idézetekhez"
 
 #~ msgid "A user profile widget displaying avatar, bio, and website link"
-#~ msgstr ""
-#~ "Widżet profilu użytkownika wyświetlający awatar, biogram i link do strony"
+#~ msgstr "Felhasználói profil widget, avatarral, leírással, és linkkel"
 
 #~ msgid "A custom post type for managing FAQs"
-#~ msgstr "Niestandardowy typ wpisu do zarządzania FAQ"
+#~ msgstr "Egyedi bejegyzéstípus GYIK kezeléséhez"
 
 #~ msgid "A post views counter that tracks and displays view counts"
-#~ msgstr "Licznik odsłon postów, który śledzi i wyświetla liczbę wyświetleń"
+#~ msgstr "Bejegyzés megtekintés számláló"
 
 #~ msgid "Maintenance mode with a countdown timer to site return"
-#~ msgstr ""
-#~ "Tryb konserwacji z licznikiem odliczania do ponownego uruchomienia witryny"
+#~ msgstr "Karbantartási mód, visszaszámlálóval az oldal visszatéréséhez"
 
 #~ msgid "An admin quick links widget for the dashboard"
-#~ msgstr "Widżet szybkich linków administratora na pulpit nawigacyjny"
+#~ msgstr "Gyorslinkek widget a WP-admin felülethez"
 
 #~ msgid "Hide the admin bar for non-admin users"
-#~ msgstr ""
-#~ "Ukryj pasek administratora dla użytkowników niebędących administratorami"
+#~ msgstr "A felső admin sáv elrejtése nem-admin felhasználók számára"
 
 #~ msgid "Hide specific menu items in the admin area"
-#~ msgstr "Ukryj określone elementy menu w obszarze administracyjnym"
+#~ msgstr "Specifikus menüpontok elrejtése az admin menüben"
 
 #~ msgid "A social media share buttons plugin for posts"
-#~ msgstr ""
-#~ "Wtyczka z przyciskami udostępniania w mediach społecznościowych dla wpisów"
+#~ msgstr "Közösségi megosztás gombok bővítmény bejegyzésekhez"
 
 #~ msgid "A custom footer credit remover"
-#~ msgstr "Niestandardowy usuwacz stopki z kredytami"
+#~ msgstr "Credits szöveg eltávolítása a láblécből"
 
 #~ msgid "A plugin to add custom CSS to the WordPress login page"
-#~ msgstr "Wtyczka dodająca niestandardowy CSS do strony logowania w WordPress"
+#~ msgstr "Egyedi CSS a WordPress bejelentkező oldalhoz"
 
 #~ msgid "A related posts display below single post content"
-#~ msgstr "Wyświetlanie powiązanych wpisów poniżej treści pojedynczego wpisu"
+#~ msgstr "Kapcsolódó bejegyzések megjelenítése a bejegyzés tartalma alatt"
 
 #~ msgid "A custom excerpt length controller"
-#~ msgstr "Niestandardowy kontroler długości wycinków (excerpt)"
+#~ msgstr "Egyedi kivonat hosszúság vezérlő"
 
 #~ msgid "A \"Back to Top\" button for long pages"
-#~ msgstr "Przycisk \"Powrót na górę\" dla długich stron"
+#~ msgstr "\"Vissza az elejére\" gomb hosszú oldalakhoz"
 
 #~ msgid "A plugin to disable comments on specific post types"
-#~ msgstr "Wtyczka do wyłączania komentarzy w określonych typach wpisów"
+#~ msgstr "Hozzászólások letiltása választott bejegyzéstípusoknál"
 
 #~ msgid "A simple Google Analytics integration"
-#~ msgstr "Prosta integracja z Google Analytics"
+#~ msgstr "Egyszerű Google Analytics integráció"
 
 #~ msgid "An author box display below posts"
-#~ msgstr "Wyświetlanie informacji o autorze poniżej wpisów"
+#~ msgstr "Szerzői doboz megjelenítése a bejegyzések alatt"
 
 #~ msgid "A custom breadcrumb generator"
-#~ msgstr "Niestandardowy generator okruszków (breadcrumbs)"
+#~ msgstr "Egyedi kenyérmorzsa-navigáció"
 
 #~ msgid "A plugin to add nofollow to external links"
-#~ msgstr "Wtyczka dodająca atrybut nofollow do linków zewnętrznych"
+#~ msgstr "Nofollow hozzáadása a külső hivatkozásokhoz"
 
 #~ msgid "A simple cookie consent banner"
-#~ msgstr "Prosty baner zgody na pliki cookie"
+#~ msgstr "Egyszerű, sütik elfogadására figyelmeztető banner"
 
 #~ msgid "A post expiration date setter"
-#~ msgstr "Ustawianie daty wygaśnięcia wpisu"
+#~ msgstr "A bejegyzésekhez beállítható lejárati dátum, amikor azok eltűnnek"
 
 #~ msgid "A basic XML sitemap generator"
-#~ msgstr "Podstawowy generator mapy witryny XML"
+#~ msgstr "Egyszerű XML oldaltérkép generátor"
 
 #~ msgid "A custom login URL creator for added security"
-#~ msgstr "Niestandardowy kreator URL logowania dla zwiększenia bezpieczeństwa"
+#~ msgstr "Egyedi bejelentkezési URL, a biztonságért"
 
 #~ msgid "A simple contact information display shortcode"
-#~ msgstr "Prosty shortcode wyświetlający informacje kontaktowe"
+#~ msgstr "Kapcsolati információkat megjelenítő rövidkód"
 
 #~ msgid "A plugin to add estimated reading time to posts"
-#~ msgstr "Wtyczka dodająca szacowany czas czytania do wpisów"
+#~ msgstr "Becsült olvasási idő megjelenítése a bejegyzéseknél"
 
 #~ msgid "A custom RSS feed footer"
-#~ msgstr "Niestandardowa stopka dla kanału RSS"
+#~ msgstr "Egyedi RSS hírcsatorna lábléc"
 
 #~ msgid "A simple post duplication tool"
-#~ msgstr "Proste narzędzie do duplikacji wpisów"
+#~ msgstr "Egyszerű bejegyzés másoló eszköz"
 
 #~ msgid "A basic schema markup generator"
-#~ msgstr "Podstawowy generator znaczników schema"
+#~ msgstr "Egyszerű schema markup generátor"
 
 #~ msgid "A plugin to add custom admin footer text"
-#~ msgstr ""
-#~ "Wtyczka dodająca niestandardowy tekst w stopce panelu administratora"
+#~ msgstr "Bővítmény egyedi admin lábléc szöveg hozzáadásához"
 
 #~ msgid "A plugin to add custom taxonomies easily"
-#~ msgstr "Wtyczka pozwalająca łatwo dodać niestandardowe taksonomie"
+#~ msgstr "Bővítmény egyedi taxonómiák könnyű hozzáadásához"
 
 #~ msgid "A simple email obfuscator to prevent spam"
-#~ msgstr ""
-#~ "Prosty narzędzie do maskowania adresów e-mail w celu zapobiegania spamowi"
+#~ msgstr "Egyszerű e-mail elrejtő eszköz a spam elkerülésére"
 
 #~ msgid "A basic redirection manager"
-#~ msgstr "Podstawowy menedżer przekierowań"
+#~ msgstr "Egyszerű átirányítás kezelő"
 
 #~ msgid "A plugin to add custom fields to user profiles"
-#~ msgstr "Wtyczka dodająca pola niestandardowe do profili użytkowników"
+#~ msgstr "Egyedi mezők hozzáadása a felhasználói profilokhoz"
 
 #~ msgid "Installing the fix"
-#~ msgstr "Instalowanie naprawy"
+#~ msgstr "Javítás telepítése"
 
-#~ msgid "Security check failed"
-#~ msgstr "Sprawdzenie bezpieczeństwa nie powiodło się"
+#~ msgid ""
+#~ "<code>chatgpt-4o-latest</code> continuously points to the version of "
+#~ "GPT-4o used in ChatGPT, and is updated frequently."
+#~ msgstr ""
+#~ "A <code>chatgpt-4o-latest</code> folyamatosan a ChatGPT által használt "
+#~ "GPT-4o verzióra mutat, és gyakran frissül."

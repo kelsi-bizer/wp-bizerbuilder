@@ -16,7 +16,7 @@
     const explanationContainer = document.getElementById('plugin_explanation_container');
     const questionDisplay = document.getElementById('question-display');
 
-    const promptAttachments = wpAutoPluginCommon.initPromptAttachments({
+    const promptAttachments = wpBizerbuilderCommon.initPromptAttachments({
         textarea: questionField,
         modelKey: ['reviewer', 'default']
     });
@@ -60,19 +60,19 @@
                     if (radio.checked) {
                         switch(radio.value) {
                             case 'security':
-                                focusText = wp_autoplugin.messages.security_focus || 'Security Analysis';
+                                focusText = wp_bizerbuilder.messages.security_focus || 'Security Analysis';
                                 break;
                             case 'performance':
-                                focusText = wp_autoplugin.messages.performance_focus || 'Performance Review';
+                                focusText = wp_bizerbuilder.messages.performance_focus || 'Performance Review';
                                 break;
                             case 'code-quality':
-                                focusText = wp_autoplugin.messages.code_quality_focus || 'Code Quality Analysis';
+                                focusText = wp_bizerbuilder.messages.code_quality_focus || 'Code Quality Analysis';
                                 break;
                             case 'usage':
-                                focusText = wp_autoplugin.messages.usage_focus || 'Usage Instructions';
+                                focusText = wp_bizerbuilder.messages.usage_focus || 'Usage Instructions';
                                 break;
                             default:
-                                focusText = wp_autoplugin.messages.general_explanation || 'General Explanation';
+                                focusText = wp_bizerbuilder.messages.general_explanation || 'General Explanation';
                         }
                         break;
                     }
@@ -102,24 +102,24 @@
         }
 
         explainPluginForm.parentElement.classList.add('loading');
-        const loader = loadingIndicator(messageExplainPlugin, wp_autoplugin.messages.generating_explanation || 'Generating plugin explanation...');
+        const loader = loadingIndicator(messageExplainPlugin, wp_bizerbuilder.messages.generating_explanation || 'Generating plugin explanation...');
         loader.start();
 
         const formData = new FormData();
-        formData.append('action', 'wp_autoplugin_explain_plugin');
+        formData.append('action', 'wp_bizerbuilder_explain_plugin');
         formData.append('plugin_question', pluginQuestion);
         formData.append('plugin_file', document.getElementById('plugin_file').value);
         formData.append('explain_focus', explanationFocus);
-        formData.append('security', wp_autoplugin.nonce);
+        formData.append('security', wp_bizerbuilder.nonce);
         promptAttachments.appendToFormData(formData);
 
         try {
-            const response = await wpAutoPluginCommon.sendRequest(formData);
+            const response = await wpBizerbuilderCommon.sendRequest(formData);
             loader.stop();
             explainPluginForm.parentElement.classList.remove('loading');
 
             if (!response.success) {
-                messageExplainPlugin.innerHTML = (wp_autoplugin.messages.explanation_error || 'Error generating explanation:') + ' <pre>' + response.data + '</pre>';
+                messageExplainPlugin.innerHTML = (wp_bizerbuilder.messages.explanation_error || 'Error generating explanation:') + ' <pre>' + response.data + '</pre>';
                 return;
             }
 
@@ -134,11 +134,11 @@
             }
             
             currentState = 'showExplanation';
-            wpAutoPluginCommon.handleStepChange(steps, 'showExplanation', onShowStep);
+            wpBizerbuilderCommon.handleStepChange(steps, 'showExplanation', onShowStep);
         } catch (error) {
             loader.stop();
             explainPluginForm.parentElement.classList.remove('loading');
-            messageExplainPlugin.innerHTML = (wp_autoplugin.messages.explanation_error || 'Error generating explanation:') + ' <pre>' + error.message + '</pre>';
+            messageExplainPlugin.innerHTML = (wp_bizerbuilder.messages.explanation_error || 'Error generating explanation:') + ' <pre>' + error.message + '</pre>';
         }
     }
 
@@ -154,7 +154,7 @@
         if (window.addTokenUsage) {
             var currentStep = document.body.getAttribute('data-current-step') || stepName;
             var modelType = window.getModelForStep ? window.getModelForStep(currentStep) : 'default';
-            var modelName = window.wpAutopluginModels ? window.wpAutopluginModels[modelType] : 'Unknown';
+            var modelName = window.wpBizerbuilderModels ? window.wpBizerbuilderModels[modelType] : 'Unknown';
             window.addTokenUsage(stepName, modelName, inputTokens, outputTokens);
         }
     }
@@ -185,12 +185,12 @@
 
     function copyToClipboard() {
         navigator.clipboard.writeText(explanationText).then(() => {
-            messageExplanation.innerHTML = wp_autoplugin.messages.copied || 'Explanation copied to clipboard!';
+            messageExplanation.innerHTML = wp_bizerbuilder.messages.copied || 'Explanation copied to clipboard!';
             setTimeout(() => {
                 messageExplanation.innerHTML = '';
             }, 2000);
         }).catch(err => {
-            messageExplanation.innerHTML = (wp_autoplugin.messages.copy_failed || 'Failed to copy:') + ' ' + err;
+            messageExplanation.innerHTML = (wp_bizerbuilder.messages.copy_failed || 'Failed to copy:') + ' ' + err;
         });
     }
 
@@ -213,7 +213,7 @@
     // Button to go back to ask another question
     document.getElementById('new-question').addEventListener('click', function() {
         currentState = 'askQuestion';
-        wpAutoPluginCommon.handleStepChange(steps, 'askQuestion', onShowStep);
+        wpBizerbuilderCommon.handleStepChange(steps, 'askQuestion', onShowStep);
     });
 
     // Copy and download buttons
@@ -223,14 +223,14 @@
     // Handle back button in browser
     window.addEventListener('popstate', function(event) {
         if (event.state && event.state.state) {
-            wpAutoPluginCommon.handleStepChange(steps, event.state.state, onShowStep);
+            wpBizerbuilderCommon.handleStepChange(steps, event.state.state, onShowStep);
         } else {
-            wpAutoPluginCommon.handleStepChange(steps, 'askQuestion', onShowStep);
+            wpBizerbuilderCommon.handleStepChange(steps, 'askQuestion', onShowStep);
         }
     });
 
     // Initialize the first step
-    wpAutoPluginCommon.handleStepChange(steps, 'askQuestion', onShowStep);
+    wpBizerbuilderCommon.handleStepChange(steps, 'askQuestion', onShowStep);
 
     // Initialize the submit handlers
     attachFormSubmitListeners();

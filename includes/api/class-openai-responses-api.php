@@ -4,15 +4,15 @@
  *
  * Handles communication with the OpenAI Responses API.
  *
- * @package WP-Autoplugin
+ * @package WP-Bizerbuilder
  * @since 1.7.0
  * @version 1.7.0
- * @link https://wp-autoplugin.com
+ * @link https://wp-bizerbuilder.com
  * @license GPL-2.0+
  * @license https://www.gnu.org/licenses/gpl-2.0.html
  */
 
-namespace WP_Autoplugin;
+namespace WP_Bizerbuilder;
 
 if ( ! defined( 'ABSPATH' ) ) {
 	exit;
@@ -98,7 +98,7 @@ class OpenAI_Responses_API extends OpenAI_API {
 		$data = json_decode( $body, true );
 
 		if ( isset( $data['error'] ) ) {
-			$message = isset( $data['error']['message'] ) ? $data['error']['message'] : __( 'Error communicating with the API.', 'wp-autoplugin' );
+			$message = isset( $data['error']['message'] ) ? $data['error']['message'] : __( 'Error communicating with the API.', 'wp-bizerbuilder' );
 			return new \WP_Error( 'api_error', $message );
 		}
 

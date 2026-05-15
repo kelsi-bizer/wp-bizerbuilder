@@ -1,8 +1,8 @@
 <?php
 /**
- * Default model configuration for WP-Autoplugin.
+ * Default model configuration for WP-Bizerbuilder.
  *
- * @package WP-Autoplugin
+ * @package WP-Bizerbuilder
  */
 
 if ( ! defined( 'ABSPATH' ) ) {
@@ -10,9 +10,10 @@ if ( ! defined( 'ABSPATH' ) ) {
 }
 
 return apply_filters(
-	'wp_autoplugin_models',
+	'wp_bizerbuilder_models',
 	[
 		'OpenAI'    => [
+			'gpt-5.5'            => 'GPT-5.5',
 			'gpt-5.1'            => 'GPT-5.1',
 			'gpt-5'              => 'GPT-5',
 			'gpt-5-codex'        => 'GPT-5 Codex',

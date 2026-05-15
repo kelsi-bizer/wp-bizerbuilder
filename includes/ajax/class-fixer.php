@@ -1,15 +1,15 @@
 <?php
 /**
- * WP-Autoplugin AJAX Fixer class.
+ * WP-Bizerbuilder AJAX Fixer class.
  *
- * @package WP-Autoplugin
+ * @package WP-Bizerbuilder
  */
 
-namespace WP_Autoplugin\Ajax;
+namespace WP_Bizerbuilder\Ajax;
 
-use WP_Autoplugin\Plugin_Fixer;
-use WP_Autoplugin\Plugin_Installer;
-use WP_Autoplugin\AI_Utils;
+use WP_Bizerbuilder\Plugin_Fixer;
+use WP_Bizerbuilder\Plugin_Installer;
+use WP_Bizerbuilder\AI_Utils;
 
 if ( ! defined( 'ABSPATH' ) ) {
 	exit;
@@ -22,14 +22,14 @@ class Fixer {
 	/**
 	 * The Admin object for accessing specialized model APIs.
 	 *
-	 * @var \WP_Autoplugin\Admin\Admin
+	 * @var \WP_Bizerbuilder\Admin\Admin
 	 */
 	private $admin;
 
 	/**
 	 * Constructor.
 	 *
-	 * @param \WP_Autoplugin\Admin\Admin $admin The admin instance.
+	 * @param \WP_Bizerbuilder\Admin\Admin $admin The admin instance.
 	 */
 	public function __construct( $admin ) {
 		$this->admin = $admin;
@@ -130,7 +130,7 @@ class Fixer {
 		$token_usage = $planner_api->get_last_token_usage();
 
 		// Strip code fences if model returns ```json.
-		$plan_data = \WP_Autoplugin\AI_Utils::strip_code_fences( $plan_data, 'json' );
+		$plan_data = \WP_Bizerbuilder\AI_Utils::strip_code_fences( $plan_data, 'json' );
 
 		wp_send_json_success(
 			[
@@ -166,7 +166,7 @@ class Fixer {
 		// For simple code responses, strip code fences. If JSON, keep as-is.
 		$trimmed = is_string( $code ) ? ltrim( $code ) : '';
 		if ( is_string( $code ) && $trimmed && '{' !== $trimmed[0] && '[' !== $trimmed[0] ) {
-			$code = \WP_Autoplugin\AI_Utils::strip_code_fences( $code, 'php' );
+			$code = \WP_Bizerbuilder\AI_Utils::strip_code_fences( $code, 'php' );
 		}
 
 		// Get token usage from the actual API that was used.
@@ -199,7 +199,7 @@ class Fixer {
 			wp_send_json(
 				[
 					'success'    => false,
-					'data'       => esc_html__( 'Invalid plugin path.', 'wp-autoplugin' ),
+					'data'       => esc_html__( 'Invalid plugin path.', 'wp-bizerbuilder' ),
 					'error_type' => 'install_error',
 				]
 			);
@@ -251,17 +251,17 @@ class Fixer {
 		$generated_files_array   = json_decode( $generated_files, true );
 
 		if ( ! $project_structure_array || ! isset( $project_structure_array['files'] ) ) {
-			wp_send_json_error( esc_html__( 'Invalid input data.', 'wp-autoplugin' ) );
+			wp_send_json_error( esc_html__( 'Invalid input data.', 'wp-bizerbuilder' ) );
 		}
 
 		$files = $project_structure_array['files'];
 		if ( ! isset( $files[ $file_index ] ) ) {
-			wp_send_json_error( esc_html__( 'File index out of range.', 'wp-autoplugin' ) );
+			wp_send_json_error( esc_html__( 'File index out of range.', 'wp-bizerbuilder' ) );
 		}
 
 		$file_info    = $files[ $file_index ];
 		$coder_api    = $this->admin->api_handler->get_coder_api();
-		$fixer        = new \WP_Autoplugin\Plugin_Fixer( $coder_api );
+		$fixer        = new \WP_Bizerbuilder\Plugin_Fixer( $coder_api );
 		$file_content = $fixer->fix_single_file( $codebase['files'], $problem, $plugin_plan, $project_structure_array, is_array( $generated_files_array ) ? $generated_files_array : [], $file_info );
 		if ( is_wp_error( $file_content ) ) {
 			wp_send_json_error( $file_content->get_error_message() );
@@ -269,7 +269,7 @@ class Fixer {
 
 		// Strip out code fences based on file type.
 		$file_type    = isset( $file_info['type'] ) ? $file_info['type'] : 'php';
-		$file_content = \WP_Autoplugin\AI_Utils::strip_code_fences( $file_content );
+		$file_content = \WP_Bizerbuilder\AI_Utils::strip_code_fences( $file_content );
 
 		$token_usage = $coder_api->get_last_token_usage();
 

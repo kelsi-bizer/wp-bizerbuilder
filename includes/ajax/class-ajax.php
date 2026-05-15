@@ -1,19 +1,19 @@
 <?php
 /**
- * WP-Autoplugin Admin AJAX class.
+ * WP-Bizerbuilder Admin AJAX class.
  *
- * @package WP-Autoplugin
+ * @package WP-Bizerbuilder
  */
 
-namespace WP_Autoplugin\Admin;
+namespace WP_Bizerbuilder\Admin;
 
-use WP_Autoplugin\Ajax\Explainer;
-use WP_Autoplugin\Ajax\Extender;
-use WP_Autoplugin\Ajax\Fixer;
-use WP_Autoplugin\Ajax\Generator;
-use WP_Autoplugin\Ajax\Hooks_Extender;
-use WP_Autoplugin\Ajax\Model;
-use WP_Autoplugin\Ajax\Theme_Extender;
+use WP_Bizerbuilder\Ajax\Explainer;
+use WP_Bizerbuilder\Ajax\Extender;
+use WP_Bizerbuilder\Ajax\Fixer;
+use WP_Bizerbuilder\Ajax\Generator;
+use WP_Bizerbuilder\Ajax\Hooks_Extender;
+use WP_Bizerbuilder\Ajax\Model;
+use WP_Bizerbuilder\Ajax\Theme_Extender;
 
 if ( ! defined( 'ABSPATH' ) ) {
 	exit;
@@ -26,7 +26,7 @@ class Ajax {
 	/**
 	 * The Admin object for accessing specialized model APIs.
 	 *
-	 * @var \WP_Autoplugin\Admin
+	 * @var \WP_Bizerbuilder\Admin
 	 */
 	private $admin;
 
@@ -40,7 +40,7 @@ class Ajax {
 	/**
 	 * Constructor sets the Admin instance and hooks into AJAX actions.
 	 *
-	 * @param \WP_Autoplugin\Admin $admin The Admin instance.
+	 * @param \WP_Bizerbuilder\Admin $admin The Admin instance.
 	 */
 	public function __construct( $admin ) {
 		$this->admin = $admin;
@@ -80,7 +80,7 @@ class Ajax {
 
 		foreach ( $actions as $handler_key => $methods ) {
 			foreach ( $methods as $method ) {
-				add_action( 'wp_ajax_wp_autoplugin_' . $method, [ $this, 'ajax_actions' ] );
+				add_action( 'wp_ajax_wp_bizerbuilder_' . $method, [ $this, 'ajax_actions' ] );
 			}
 		}
 	}
@@ -92,11 +92,11 @@ class Ajax {
 	 */
 	public function ajax_actions() {
 		if ( ! current_user_can( 'manage_options' ) ) {
-			wp_send_json_error( esc_html__( 'You are not allowed to access this page.', 'wp-autoplugin' ) );
+			wp_send_json_error( esc_html__( 'You are not allowed to access this page.', 'wp-bizerbuilder' ) );
 		}
 
 		$action_input = isset( $_POST['action'] ) ? sanitize_text_field( wp_unslash( $_POST['action'] ) ) : '';
-		$method_name  = str_replace( 'wp_autoplugin_', '', $action_input );
+		$method_name  = str_replace( 'wp_bizerbuilder_', '', $action_input );
 
 		$target_handler = null;
 		foreach ( $this->handlers as $handler ) {
@@ -107,12 +107,12 @@ class Ajax {
 		}
 
 		if ( ! $target_handler ) {
-			wp_send_json_error( esc_html__( 'Invalid AJAX action.', 'wp-autoplugin' ) );
+			wp_send_json_error( esc_html__( 'Invalid AJAX action.', 'wp-bizerbuilder' ) );
 		}
 
 		if ( $this->should_verify_shared_nonce( $target_handler ) ) {
-			if ( ! check_ajax_referer( 'wp_autoplugin_generate', 'security', false ) ) {
-				wp_send_json_error( esc_html__( 'Security check failed.', 'wp-autoplugin' ) );
+			if ( ! check_ajax_referer( 'wp_bizerbuilder_generate', 'security', false ) ) {
+				wp_send_json_error( esc_html__( 'Security check failed.', 'wp-bizerbuilder' ) );
 			}
 		}
 

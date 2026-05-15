@@ -1,20 +1,20 @@
 <?php
 /**
- * WP-Autoplugin Admin Bulk Actions class.
+ * WP-Bizerbuilder Admin Bulk Actions class.
  *
- * @package WP-Autoplugin
+ * @package WP-Bizerbuilder
  */
 
-namespace WP_Autoplugin\Admin;
+namespace WP_Bizerbuilder\Admin;
 
-use WP_Autoplugin\Plugin_Installer;
+use WP_Bizerbuilder\Plugin_Installer;
 
 if ( ! defined( 'ABSPATH' ) ) {
 	exit;
 }
 
 /**
- * Class that handles bulk actions (activate, deactivate, delete) on the list of Autoplugins.
+ * Class that handles bulk actions (activate, deactivate, delete) on the list of Bizerbuilders.
  */
 class Bulk_Actions {
 
@@ -33,22 +33,22 @@ class Bulk_Actions {
 	}
 
 	/**
-	 * Process the bulk action if on the WP-Autoplugin page.
+	 * Process the bulk action if on the WP-Bizerbuilder page.
 	 *
 	 * @return void
 	 */
 	public function process_bulk_action() {
-		if ( ! is_admin() || empty( $_GET['page'] ) || $_GET['page'] !== 'wp-autoplugin' || empty( $_REQUEST['action'] ) ) {
+		if ( ! is_admin() || empty( $_GET['page'] ) || $_GET['page'] !== 'wp-bizerbuilder' || empty( $_REQUEST['action'] ) ) {
 			return;
 		}
 
 		$nonce_value = isset( $_GET['nonce'] ) ? sanitize_text_field( wp_unslash( $_GET['nonce'] ) ) : '';
-		if ( ! $nonce_value || ! wp_verify_nonce( $nonce_value, 'wp-autoplugin-activate-plugin' ) ) {
-			wp_die( esc_html__( 'Security check failed.', 'wp-autoplugin' ) );
+		if ( ! $nonce_value || ! wp_verify_nonce( $nonce_value, 'wp-bizerbuilder-activate-plugin' ) ) {
+			wp_die( esc_html__( 'Security check failed.', 'wp-bizerbuilder' ) );
 		}
 
 		if ( ! current_user_can( 'manage_options' ) ) {
-			wp_die( esc_html__( 'You do not have sufficient permissions to access this page.', 'wp-autoplugin' ) );
+			wp_die( esc_html__( 'You do not have sufficient permissions to access this page.', 'wp-bizerbuilder' ) );
 		}
 
 		$installer = Plugin_Installer::get_instance();

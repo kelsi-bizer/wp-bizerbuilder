@@ -1,14 +1,14 @@
 <?php
 /**
- * WP-Autoplugin AJAX Explainer class.
+ * WP-Bizerbuilder AJAX Explainer class.
  *
- * @package WP-Autoplugin
+ * @package WP-Bizerbuilder
  */
 
-namespace WP_Autoplugin\Ajax;
+namespace WP_Bizerbuilder\Ajax;
 
-use WP_Autoplugin\Plugin_Explainer;
-use WP_Autoplugin\AI_Utils;
+use WP_Bizerbuilder\Plugin_Explainer;
+use WP_Bizerbuilder\AI_Utils;
 
 if ( ! defined( 'ABSPATH' ) ) {
 	exit;
@@ -21,14 +21,14 @@ class Explainer {
 	/**
 	 * The Admin object for accessing specialized model APIs.
 	 *
-	 * @var \WP_Autoplugin\Admin\Admin
+	 * @var \WP_Bizerbuilder\Admin\Admin
 	 */
 	private $admin;
 
 	/**
 	 * Constructor.
 	 *
-	 * @param \WP_Autoplugin\Admin\Admin $admin The admin instance.
+	 * @param \WP_Bizerbuilder\Admin\Admin $admin The admin instance.
 	 */
 	public function __construct( $admin ) {
 		$this->admin = $admin;

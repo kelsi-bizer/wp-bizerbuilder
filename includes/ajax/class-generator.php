@@ -1,15 +1,15 @@
 <?php
 /**
- * WP-Autoplugin AJAX Generator class.
+ * WP-Bizerbuilder AJAX Generator class.
  *
- * @package WP-Autoplugin
+ * @package WP-Bizerbuilder
  */
 
-namespace WP_Autoplugin\Ajax;
+namespace WP_Bizerbuilder\Ajax;
 
-use WP_Autoplugin\Plugin_Generator;
-use WP_Autoplugin\Plugin_Installer;
-use WP_Autoplugin\AI_Utils;
+use WP_Bizerbuilder\Plugin_Generator;
+use WP_Bizerbuilder\Plugin_Installer;
+use WP_Bizerbuilder\AI_Utils;
 
 if ( ! defined( 'ABSPATH' ) ) {
 	exit;
@@ -22,14 +22,14 @@ class Generator {
 	/**
 	 * The Admin object for accessing specialized model APIs.
 	 *
-	 * @var \WP_Autoplugin\Admin\Admin
+	 * @var \WP_Bizerbuilder\Admin\Admin
 	 */
 	private $admin;
 
 	/**
 	 * Constructor.
 	 *
-	 * @param \WP_Autoplugin\Admin\Admin $admin The admin instance.
+	 * @param \WP_Bizerbuilder\Admin\Admin $admin The admin instance.
 	 */
 	public function __construct( $admin ) {
 		$this->admin = $admin;
@@ -54,10 +54,10 @@ class Generator {
 		}
 
 		// Strip out any code block fences like ```json ... ```.
-		$plan_data  = \WP_Autoplugin\AI_Utils::strip_code_fences( $plan_data, 'json' );
+		$plan_data  = \WP_Bizerbuilder\AI_Utils::strip_code_fences( $plan_data, 'json' );
 		$plan_array = json_decode( $plan_data, true );
 		if ( ! $plan_array ) {
-			wp_send_json_error( esc_html__( 'Failed to decode the generated plan: ', 'wp-autoplugin' ) . $plan_data );
+			wp_send_json_error( esc_html__( 'Failed to decode the generated plan: ', 'wp-bizerbuilder' ) . $plan_data );
 		}
 
 		// Get token usage from the actual API that was used.
@@ -89,7 +89,7 @@ class Generator {
 		}
 
 		// Strip out code fences like ```php ... ```.
-		$code = \WP_Autoplugin\AI_Utils::strip_code_fences( $code, 'php' );
+		$code = \WP_Bizerbuilder\AI_Utils::strip_code_fences( $code, 'php' );
 
 		// Get token usage from the actual API that was used.
 		$token_usage = $coder_api->get_last_token_usage();
@@ -119,12 +119,12 @@ class Generator {
 		$generated_files_array   = json_decode( $generated_files, true );
 
 		if ( ! $plugin_plan_array || ! $project_structure_array || ! isset( $project_structure_array['files'] ) ) {
-			wp_send_json_error( esc_html__( 'Invalid input data.', 'wp-autoplugin' ) );
+			wp_send_json_error( esc_html__( 'Invalid input data.', 'wp-bizerbuilder' ) );
 		}
 
 		$files = $project_structure_array['files'];
 		if ( ! isset( $files[ $file_index ] ) ) {
-			wp_send_json_error( esc_html__( 'File index out of range.', 'wp-autoplugin' ) );
+			wp_send_json_error( esc_html__( 'File index out of range.', 'wp-bizerbuilder' ) );
 		}
 
 		$file_info    = $files[ $file_index ];
@@ -138,7 +138,7 @@ class Generator {
 
 		// Strip out code fences.
 		$file_type    = $file_info['type'];
-		$file_content = \WP_Autoplugin\AI_Utils::strip_code_fences( $file_content );
+		$file_content = \WP_Bizerbuilder\AI_Utils::strip_code_fences( $file_content );
 
 		// Get token usage from the actual API that was used.
 		$token_usage = $coder_api->get_last_token_usage();
@@ -159,7 +159,7 @@ class Generator {
 	 * @return void
 	 */
 	public function create_plugin() {
-		$plugin_mode = get_option( 'wp_autoplugin_plugin_mode', 'simple' );
+		$plugin_mode = get_option( 'wp_bizerbuilder_plugin_mode', 'simple' );
 
 		if ( 'complex' === $plugin_mode ) {
 			$this->create_complex_plugin();
@@ -207,7 +207,7 @@ class Generator {
 		$generated_files_array   = json_decode( $generated_files, true );
 
 		if ( ! $project_structure_array || ! $generated_files_array ) {
-			wp_send_json_error( esc_html__( 'Invalid input data.', 'wp-autoplugin' ) );
+			wp_send_json_error( esc_html__( 'Invalid input data.', 'wp-bizerbuilder' ) );
 		}
 
 		$installer = Plugin_Installer::get_instance();
@@ -240,7 +240,7 @@ class Generator {
 		$generated_files_array   = json_decode( $generated_files, true );
 
 		if ( ! $project_structure_array || ! $generated_files_array ) {
-			wp_send_json_error( esc_html__( 'Invalid input data.', 'wp-autoplugin' ) );
+			wp_send_json_error( esc_html__( 'Invalid input data.', 'wp-bizerbuilder' ) );
 		}
 
 		$reviewer_api  = $this->admin->api_handler->get_reviewer_api();
@@ -252,10 +252,10 @@ class Generator {
 		}
 
 		// Strip out any code block fences like ```json ... ```.
-		$review_result = \WP_Autoplugin\AI_Utils::strip_code_fences( $review_result, 'json' );
+		$review_result = \WP_Bizerbuilder\AI_Utils::strip_code_fences( $review_result, 'json' );
 		$review_result = json_decode( $review_result, true );
 		if ( ! $review_result ) {
-			wp_send_json_error( esc_html__( 'Failed to decode the review result.', 'wp-autoplugin' ) );
+			wp_send_json_error( esc_html__( 'Failed to decode the review result.', 'wp-bizerbuilder' ) );
 		}
 
 		// Get token usage from the actual API that was used.
