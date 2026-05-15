@@ -1,0 +1,24 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="256" height="256" role="img" aria-label="WP-Bizerbuilder icon">
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#3B82F6"/>
+      <stop offset="1" stop-color="#7C3AED"/>
+    </linearGradient>
+    <linearGradient id="sheen" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#ffffff" stop-opacity="0.18"/>
+      <stop offset="0.5" stop-color="#ffffff" stop-opacity="0"/>
+    </linearGradient>
+  </defs>
+
+  <rect x="0" y="0" width="256" height="256" rx="56" fill="url(#bg)"/>
+  <rect x="0" y="0" width="256" height="256" rx="56" fill="url(#sheen)"/>
+
+  <!-- "W" mark, slightly heavier for legibility at small icon sizes -->
+  <path d="M46 82 L90 190 L128 124 L166 190 L210 82"
+        fill="none" stroke="#ffffff" stroke-width="28"
+        stroke-linecap="round" stroke-linejoin="round"/>
+
+  <!-- AI build spark -->
+  <path d="M200 34 C204 53 211 60 230 64 C211 68 204 75 200 94 C196 75 189 68 170 64 C189 60 196 53 200 34 Z"
+        fill="#FFD36B"/>
+</svg>
