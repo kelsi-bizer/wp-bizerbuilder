@@ -1,5 +1,9 @@
 # WP-Bizerbuilder
 
+<p align="center">
+  <img src="assets/logo.svg" alt="WP-Bizerbuilder logo" width="128" height="128">
+</p>
+
 WP-Bizerbuilder is a free WordPress plugin that uses AI to assist in generating, fixing, and extending plugins on-demand. It enables users to quickly create functional plugins from simple descriptions, addressing specific needs without unnecessary bloat.
 
 - Generate plugins using AI

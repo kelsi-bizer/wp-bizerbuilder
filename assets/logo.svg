@@ -1,0 +1,27 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="256" height="256" role="img" aria-label="WP-Bizerbuilder logo">
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#3B82F6"/>
+      <stop offset="1" stop-color="#7C3AED"/>
+    </linearGradient>
+    <linearGradient id="sheen" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#ffffff" stop-opacity="0.18"/>
+      <stop offset="0.5" stop-color="#ffffff" stop-opacity="0"/>
+    </linearGradient>
+  </defs>
+
+  <rect x="0" y="0" width="256" height="256" rx="56" fill="url(#bg)"/>
+  <rect x="0" y="0" width="256" height="256" rx="56" fill="url(#sheen)"/>
+
+  <!-- "W" wordmark / WordPress nod, built as a bold geometric stroke -->
+  <path d="M48 80 L90 188 L128 122 L166 188 L208 80"
+        fill="none" stroke="#ffffff" stroke-width="26"
+        stroke-linecap="round" stroke-linejoin="round"/>
+
+  <!-- AI build spark -->
+  <path d="M200 36 C204 54 210 60 228 64 C210 68 204 74 200 92 C196 74 190 68 172 64 C190 60 196 54 200 36 Z"
+        fill="#FFD36B"/>
+  <!-- small secondary spark -->
+  <path d="M60 176 C62 186 65 189 75 191 C65 193 62 196 60 206 C58 196 55 193 45 191 C55 189 58 186 60 176 Z"
+        fill="#FFD36B" opacity="0.85"/>
+</svg>
