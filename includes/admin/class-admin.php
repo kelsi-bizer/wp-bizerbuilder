@@ -1,18 +1,18 @@
 <?php
 /**
- * WP-Autoplugin Admin class.
+ * WP-Bizerbuilder Admin class.
  *
- * @package WP-Autoplugin
+ * @package WP-Bizerbuilder
  * @since 1.0.0
  * @version 1.4.3
- * @link https://wp-autoplugin.com
+ * @link https://wp-bizerbuilder.com
  * @license GPL-2.0+
  * @license https://www.gnu.org/licenses/gpl-2.0.html
  */
 
-namespace WP_Autoplugin\Admin;
+namespace WP_Bizerbuilder\Admin;
 
-use WP_Autoplugin\Admin\Ajax;
+use WP_Bizerbuilder\Admin\Ajax;
 
 if ( ! defined( 'ABSPATH' ) ) {
 	exit;
@@ -54,11 +54,11 @@ class Admin {
 	 * @var array
 	 */
 	public static function get_models() {
-		return include WP_AUTOPLUGIN_DIR . 'includes/config/models.php';
+		return include WP_BIZERBUILDER_DIR . 'includes/config/models.php';
 	}
 
 	/**
-	 * Output a simple admin footer for WP-Autoplugin pages.
+	 * Output a simple admin footer for WP-Bizerbuilder pages.
 	 *
 	 * @return void
 	 */
@@ -66,14 +66,14 @@ class Admin {
 		// Get the API handler to fetch the next task model.
 		$next_task_model = $this->api_handler->get_next_task_model();
 		?>
-		<div id="wp-autoplugin-footer">
+		<div id="wp-bizerbuilder-footer">
 			<div class="footer-left">
 				<span class="credits">
 					<?php
 					printf(
 						// translators: %s: version number.
-						esc_html__( 'WP-Autoplugin v%s', 'wp-autoplugin' ),
-						esc_html( WP_AUTOPLUGIN_VERSION )
+						esc_html__( 'WP-Bizerbuilder v%s', 'wp-bizerbuilder' ),
+						esc_html( WP_BIZERBUILDER_VERSION )
 					);
 					?>
 				</span>
@@ -83,7 +83,7 @@ class Admin {
 						<?php
 						$translated_model_string = wp_kses(
 							// translators: %s: model name.
-							__( 'Model: %s', 'wp-autoplugin' ),
+							__( 'Model: %s', 'wp-bizerbuilder' ),
 							[ 'code' => [] ]
 						);
 						printf(
@@ -91,18 +91,18 @@ class Admin {
 							'<code>' . esc_html( $next_task_model ) . '</code>'
 						);
 						?>
-						<a href="#" id="change-model-link" style="text-decoration: none;"><?php esc_html_e( '(Change)', 'wp-autoplugin' ); ?></a>
+						<a href="#" id="change-model-link" style="text-decoration: none;"><?php esc_html_e( '(Change)', 'wp-bizerbuilder' ); ?></a>
 					</span>
 				</span>
 			</div>
 			<div class="footer-right">
-				<span id="token-display" style="display: none; cursor: pointer;" title="<?php esc_attr_e( 'Click for token usage breakdown', 'wp-autoplugin' ); ?>">
+				<span id="token-display" style="display: none; cursor: pointer;" title="<?php esc_attr_e( 'Click for token usage breakdown', 'wp-bizerbuilder' ); ?>">
 					<span id="token-input">0</span> IN | <span id="token-output">0</span> OUT
 				</span>
 			</div>
 		</div>
 
 		<?php
-		include WP_AUTOPLUGIN_DIR . 'views/footer-modal.php';
+		include WP_BIZERBUILDER_DIR . 'views/footer-modal.php';
 	}
 }

@@ -1,11 +1,11 @@
 <?php
 /**
- * WP-Autoplugin Admin Settings class.
+ * WP-Bizerbuilder Admin Settings class.
  *
- * @package WP-Autoplugin
+ * @package WP-Bizerbuilder
  */
 
-namespace WP_Autoplugin\Admin;
+namespace WP_Bizerbuilder\Admin;
 
 if ( ! defined( 'ABSPATH' ) ) {
 	exit;
@@ -29,14 +29,14 @@ class Settings {
 	 * @return void
 	 */
 	public function register_settings() {
-		register_setting( 'wp_autoplugin_settings', 'wp_autoplugin_openai_api_key' );
-		register_setting( 'wp_autoplugin_settings', 'wp_autoplugin_anthropic_api_key' );
-		register_setting( 'wp_autoplugin_settings', 'wp_autoplugin_google_api_key' );
-		register_setting( 'wp_autoplugin_settings', 'wp_autoplugin_xai_api_key' );
-		register_setting( 'wp_autoplugin_settings', 'wp_autoplugin_model' );
-		register_setting( 'wp_autoplugin_settings', 'wp_autoplugin_planner_model' );
-		register_setting( 'wp_autoplugin_settings', 'wp_autoplugin_coder_model' );
-		register_setting( 'wp_autoplugin_settings', 'wp_autoplugin_reviewer_model' );
-		register_setting( 'wp_autoplugin_settings', 'wp_autoplugin_plugin_mode' );
+		register_setting( 'wp_bizerbuilder_settings', 'wp_bizerbuilder_openai_api_key' );
+		register_setting( 'wp_bizerbuilder_settings', 'wp_bizerbuilder_anthropic_api_key' );
+		register_setting( 'wp_bizerbuilder_settings', 'wp_bizerbuilder_google_api_key' );
+		register_setting( 'wp_bizerbuilder_settings', 'wp_bizerbuilder_xai_api_key' );
+		register_setting( 'wp_bizerbuilder_settings', 'wp_bizerbuilder_model' );
+		register_setting( 'wp_bizerbuilder_settings', 'wp_bizerbuilder_planner_model' );
+		register_setting( 'wp_bizerbuilder_settings', 'wp_bizerbuilder_coder_model' );
+		register_setting( 'wp_bizerbuilder_settings', 'wp_bizerbuilder_reviewer_model' );
+		register_setting( 'wp_bizerbuilder_settings', 'wp_bizerbuilder_plugin_mode' );
 	}
 }

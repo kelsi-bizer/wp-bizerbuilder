@@ -1,16 +1,16 @@
 <?php
 /**
- * Autoplugin Explainer class.
+ * Bizerbuilder Explainer class.
  *
- * @package WP-Autoplugin
+ * @package WP-Bizerbuilder
  * @since 1.3
  * @version 1.3
- * @link https://wp-autoplugin.com
+ * @link https://wp-bizerbuilder.com
  * @license GPL-2.0+
  * @license https://www.gnu.org/licenses/gpl-2.0.html
  */
 
-namespace WP_Autoplugin;
+namespace WP_Bizerbuilder;
 
 if ( ! defined( 'ABSPATH' ) ) {
 	exit;

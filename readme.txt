@@ -1,6 +1,6 @@
-=== WP-Autoplugin ===
+=== WP-Bizerbuilder ===
 Contributors: balazspiller
-Donate link: https://wp-autoplugin.com
+Donate link: https://wp-bizerbuilder.com
 Tags: ai, plugin generator, development, wordpress, automation
 Requires at least: 6.0
 Tested up to: 6.9
@@ -13,7 +13,7 @@ A free WordPress plugin that uses AI to generate, fix, and extend plugins on-dem
 
 == Description ==
 
-WP-Autoplugin is a free and open-source WordPress plugin that leverages AI to assist users in generating plugins based on their descriptions. It also helps fix and extend existing plugins, enabling quick and efficient plugin development without unnecessary bloat.
+WP-Bizerbuilder is a free and open-source WordPress plugin that leverages AI to assist users in generating plugins based on their descriptions. It also helps fix and extend existing plugins, enabling quick and efficient plugin development without unnecessary bloat.
 
 **Features:**
 - Generate WordPress plugins using AI.
@@ -28,17 +28,17 @@ WP-Autoplugin is a free and open-source WordPress plugin that leverages AI to as
 
 **How It Works:**
 1. Describe the plugin you want to create.
-2. WP-Autoplugin generates a development plan and code using AI.
+2. WP-Bizerbuilder generates a development plan and code using AI.
 3. Review, modify, and install the generated plugin with ease.
 
-For more details and screenshots, visit [https://wp-autoplugin.com](https://wp-autoplugin.com).
+For more details and screenshots, visit [https://wp-bizerbuilder.com](https://wp-bizerbuilder.com).
 
 == Installation ==
 
 1. Download the plugin from the WordPress Plugin Directory.
-2. Upload the plugin zip file through the WordPress admin Plugins screen, or extract and upload the `wp-autoplugin` folder to `/wp-content/plugins/` via FTP.
+2. Upload the plugin zip file through the WordPress admin Plugins screen, or extract and upload the `wp-bizerbuilder` folder to `/wp-content/plugins/` via FTP.
 3. Activate the plugin through the Plugins screen in WordPress.
-4. Go to the WP-Autoplugin settings page and enter your API key(s).
+4. Go to the WP-Bizerbuilder settings page and enter your API key(s).
 5. Choose your preferred AI model in the settings.
 6. Start generating and managing plugins!
 
@@ -47,19 +47,19 @@ For more details and screenshots, visit [https://wp-autoplugin.com](https://wp-a
 1. Generate plugin form.
 2. Review generated plan.
 3. Review generated code.
-4. Autoplugins listing screen.
+4. Bizerbuilders listing screen.
 5. Fix plugin form.
 
 == Frequently Asked Questions ==
 
-= Do I need an API key to use WP-Autoplugin? =
+= Do I need an API key to use WP-Bizerbuilder? =
 Yes, you need an API key from a supported AI provider (e.g., OpenAI, Anthropic, Google AI Studio, or xAI). Your API key is stored on your server and is never shared externally.
 
-= Is WP-Autoplugin free? =
+= Is WP-Bizerbuilder free? =
 Yes, the plugin is completely free with no ads or account requirements. However, API usage may incur costs depending on the provider you choose.
 
 = Is the generated code production-ready? =
-While WP-Autoplugin aims to generate high-quality code adhering to WordPress standards, we recommend testing the code thoroughly before using it on a production site.
+While WP-Bizerbuilder aims to generate high-quality code adhering to WordPress standards, we recommend testing the code thoroughly before using it on a production site.
 
 = What's the difference between simple and complex plugin mode? =
 Simple mode generates single-file plugins, while complex mode can create sophisticated multi-file plugins with proper file structure, classes, and organization. Complex mode uses more tokens but produces more professional, scalable plugins.

@@ -1,20 +1,20 @@
 <?php
 /**
- * WP-Autoplugin API Handler class.
+ * WP-Bizerbuilder API Handler class.
  *
- * @package WP-Autoplugin
+ * @package WP-Bizerbuilder
  */
 
-namespace WP_Autoplugin\Admin;
+namespace WP_Bizerbuilder\Admin;
 
-use WP_Autoplugin\API;
-use WP_Autoplugin\OpenAI_API;
-use WP_Autoplugin\OpenAI_Responses_API;
-use WP_Autoplugin\Anthropic_API;
-use WP_Autoplugin\Google_Gemini_API;
-use WP_Autoplugin\XAI_API;
-use WP_Autoplugin\Custom_API;
-use WP_Autoplugin\Admin\Admin;
+use WP_Bizerbuilder\API;
+use WP_Bizerbuilder\OpenAI_API;
+use WP_Bizerbuilder\OpenAI_Responses_API;
+use WP_Bizerbuilder\Anthropic_API;
+use WP_Bizerbuilder\Google_Gemini_API;
+use WP_Bizerbuilder\XAI_API;
+use WP_Bizerbuilder\Custom_API;
+use WP_Bizerbuilder\Admin\Admin;
 
 if ( ! defined( 'ABSPATH' ) ) {
 	exit;
@@ -36,7 +36,7 @@ class Api_Handler {
 	 * Constructor.
 	 */
 	public function __construct() {
-		$model        = get_option( 'wp_autoplugin_model' );
+		$model        = get_option( 'wp_bizerbuilder_model' );
 		$this->ai_api = $this->get_api( $model );
 	}
 
@@ -48,11 +48,11 @@ class Api_Handler {
 	 * @return API|null
 	 */
 	public function get_api( $model ) {
-		$openai_api_key    = get_option( 'wp_autoplugin_openai_api_key' );
-		$anthropic_api_key = get_option( 'wp_autoplugin_anthropic_api_key' );
-		$google_api_key    = get_option( 'wp_autoplugin_google_api_key' );
-		$xai_api_key       = get_option( 'wp_autoplugin_xai_api_key' );
-		$custom_models     = get_option( 'wp_autoplugin_custom_models', [] );
+		$openai_api_key    = get_option( 'wp_bizerbuilder_openai_api_key' );
+		$anthropic_api_key = get_option( 'wp_bizerbuilder_anthropic_api_key' );
+		$google_api_key    = get_option( 'wp_bizerbuilder_google_api_key' );
+		$xai_api_key       = get_option( 'wp_bizerbuilder_xai_api_key' );
+		$custom_models     = get_option( 'wp_bizerbuilder_custom_models', [] );
 
 		$api = null;
 
@@ -104,8 +104,8 @@ class Api_Handler {
 	 * @return string
 	 */
 	public function get_planner_model() {
-		$planner_model = get_option( 'wp_autoplugin_planner_model' );
-		return ! empty( $planner_model ) ? $planner_model : get_option( 'wp_autoplugin_model' );
+		$planner_model = get_option( 'wp_bizerbuilder_planner_model' );
+		return ! empty( $planner_model ) ? $planner_model : get_option( 'wp_bizerbuilder_model' );
 	}
 
 	/**
@@ -114,8 +114,8 @@ class Api_Handler {
 	 * @return string
 	 */
 	public function get_coder_model() {
-		$coder_model = get_option( 'wp_autoplugin_coder_model' );
-		return ! empty( $coder_model ) ? $coder_model : get_option( 'wp_autoplugin_model' );
+		$coder_model = get_option( 'wp_bizerbuilder_coder_model' );
+		return ! empty( $coder_model ) ? $coder_model : get_option( 'wp_bizerbuilder_model' );
 	}
 
 	/**
@@ -124,8 +124,8 @@ class Api_Handler {
 	 * @return string
 	 */
 	public function get_reviewer_model() {
-		$reviewer_model = get_option( 'wp_autoplugin_reviewer_model' );
-		return ! empty( $reviewer_model ) ? $reviewer_model : get_option( 'wp_autoplugin_model' );
+		$reviewer_model = get_option( 'wp_bizerbuilder_reviewer_model' );
+		return ! empty( $reviewer_model ) ? $reviewer_model : get_option( 'wp_bizerbuilder_model' );
 	}
 
 	/**
@@ -163,24 +163,24 @@ class Api_Handler {
 	public function get_next_task_model() {
 		$screen = get_current_screen();
 		if ( ! $screen ) {
-			return get_option( 'wp_autoplugin_model' );
+			return get_option( 'wp_bizerbuilder_model' );
 		}
 
 		switch ( $screen->id ) {
-			case 'wp-autoplugin_page_wp-autoplugin-generate':
+			case 'wp-bizerbuilder_page_wp-bizerbuilder-generate':
 				return $this->get_planner_model();
-			case 'admin_page_wp-autoplugin-fix':
+			case 'admin_page_wp-bizerbuilder-fix':
 				return $this->get_planner_model();
-			case 'admin_page_wp-autoplugin-extend':
+			case 'admin_page_wp-bizerbuilder-extend':
 				return $this->get_planner_model();
-			case 'admin_page_wp-autoplugin-extend-hooks':
+			case 'admin_page_wp-bizerbuilder-extend-hooks':
 				return $this->get_planner_model();
-			case 'admin_page_wp-autoplugin-extend-theme':
+			case 'admin_page_wp-bizerbuilder-extend-theme':
 				return $this->get_planner_model();
-			case 'admin_page_wp-autoplugin-explain':
+			case 'admin_page_wp-bizerbuilder-explain':
 				return $this->get_reviewer_model();
 			default:
-				return get_option( 'wp_autoplugin_model' );
+				return get_option( 'wp_bizerbuilder_model' );
 		}
 	}
 }

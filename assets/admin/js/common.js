@@ -1,8 +1,8 @@
 (function () {
     'use strict';
 
-    const supportedImageModels = Array.isArray(window.wp_autoplugin?.supported_image_models)
-        ? window.wp_autoplugin.supported_image_models
+    const supportedImageModels = Array.isArray(window.wp_bizerbuilder?.supported_image_models)
+        ? window.wp_bizerbuilder.supported_image_models
         : [];
     const supportedImageModelsNormalized = supportedImageModels.map((model) => (typeof model === 'string' ? model.toLowerCase().trim() : ''));
 
@@ -16,17 +16,17 @@
         function ensureOverlay(text) {
             if (!overlay || !document.body.contains(overlay)) {
                 overlay = document.createElement('div');
-                overlay.className = 'autoplugin-drop-overlay';
+                overlay.className = 'bizerbuilder-drop-overlay';
                 overlay.setAttribute('aria-hidden', 'true');
                 overlayContent = document.createElement('div');
-                overlayContent.className = 'autoplugin-drop-overlay__content';
+                overlayContent.className = 'bizerbuilder-drop-overlay__content';
                 overlay.appendChild(overlayContent);
                 document.body.appendChild(overlay);
             }
 
             if (!overlayContent || !overlay.contains(overlayContent)) {
                 overlayContent = document.createElement('div');
-                overlayContent.className = 'autoplugin-drop-overlay__content';
+                overlayContent.className = 'bizerbuilder-drop-overlay__content';
                 overlay.appendChild(overlayContent);
             }
 
@@ -233,7 +233,7 @@
         };
     })();
 
-    window.wpAutopluginDropManager = dropManager;
+    window.wpBizerbuilderDropManager = dropManager;
 
     function handleStepChange(steps, step, onShowStep) {
         Object.values(steps).forEach((el) => {
@@ -277,7 +277,7 @@
     }
 
     async function sendRequest(formData) {
-        const response = await fetch(wp_autoplugin.ajax_url, {
+        const response = await fetch(wp_bizerbuilder.ajax_url, {
             method: 'POST',
             body: formData
         });
@@ -298,7 +298,7 @@
             };
         }
 
-        if (textarea.dataset.autopluginAttachments === '1') {
+        if (textarea.dataset.bizerbuilderAttachments === '1') {
             return {
                 appendToFormData() {},
                 clear() {},
@@ -311,13 +311,13 @@
         const attachTitle = options.attachTitle || 'Attach images';
 
         const wrapper = document.createElement('div');
-        wrapper.className = 'autoplugin-prompt-wrapper';
+        wrapper.className = 'bizerbuilder-prompt-wrapper';
         textarea.parentNode.insertBefore(wrapper, textarea);
         wrapper.appendChild(textarea);
 
         const attachButton = document.createElement('button');
         attachButton.type = 'button';
-        attachButton.className = 'autoplugin-attach-button';
+        attachButton.className = 'bizerbuilder-attach-button';
         attachButton.innerHTML = '<span class="dashicons dashicons-paperclip" aria-hidden="true"></span>';
         attachButton.title = attachTitle;
         attachButton.setAttribute('aria-label', attachTitle);
@@ -327,13 +327,13 @@
         fileInput.type = 'file';
         fileInput.accept = 'image/*';
         fileInput.multiple = true;
-        fileInput.className = 'autoplugin-attach-input';
+        fileInput.className = 'bizerbuilder-attach-input';
         fileInput.setAttribute('aria-hidden', 'true');
         fileInput.style.display = 'none';
         wrapper.appendChild(fileInput);
 
         const attachmentsContainer = document.createElement('div');
-        attachmentsContainer.className = 'autoplugin-attachments';
+        attachmentsContainer.className = 'bizerbuilder-attachments';
         wrapper.appendChild(attachmentsContainer);
 
         const attachments = [];
@@ -344,13 +344,13 @@
             if (typeof options.getModelName === 'function') {
                 return options.getModelName();
             }
-            if (window.wpAutopluginModels) {
+            if (window.wpBizerbuilderModels) {
                 for (const key of modelKeys) {
-                    if (key && window.wpAutopluginModels[key]) {
-                        return window.wpAutopluginModels[key];
+                    if (key && window.wpBizerbuilderModels[key]) {
+                        return window.wpBizerbuilderModels[key];
                     }
                 }
-                return window.wpAutopluginModels.default || '';
+                return window.wpBizerbuilderModels.default || '';
             }
             return '';
         }
@@ -386,7 +386,7 @@
                 attachButton.classList.remove('is-visible');
                 attachButton.disabled = true;
             }
-            wrapper.classList.toggle('autoplugin-prompt-wrapper--supports-images', supported);
+            wrapper.classList.toggle('bizerbuilder-prompt-wrapper--supports-images', supported);
         }
 
         function renderAttachments() {
@@ -399,7 +399,7 @@
             attachmentsContainer.classList.add('has-attachments');
             attachments.forEach((item) => {
                 const thumb = document.createElement('div');
-                thumb.className = 'autoplugin-attachment';
+                thumb.className = 'bizerbuilder-attachment';
 
                 const img = document.createElement('img');
                 img.src = item.dataUrl;
@@ -408,7 +408,7 @@
 
                 const remove = document.createElement('button');
                 remove.type = 'button';
-                remove.className = 'autoplugin-attachment-remove';
+                remove.className = 'bizerbuilder-attachment-remove';
                 remove.setAttribute('aria-label', 'Remove image');
                 remove.innerHTML = '&times;';
                 remove.addEventListener('click', () => {
@@ -483,7 +483,7 @@
             fileInput.value = '';
         });
 
-        window.addEventListener('wpAutopluginModelsUpdated', updateButtonVisibility);
+        window.addEventListener('wpBizerbuilderModelsUpdated', updateButtonVisibility);
         updateButtonVisibility();
 
         window.addEventListener('DOMContentLoaded', updateButtonVisibility, { once: true });
@@ -491,7 +491,7 @@
         renderAttachments();
 
         const dropOverlayText = options.dropOverlayText
-            || window.wp_autoplugin?.messages?.drop_files_to_attach
+            || window.wp_bizerbuilder?.messages?.drop_files_to_attach
             || 'Drop files to attach';
 
         function isWrapperVisible() {
@@ -514,7 +514,7 @@
             getOverlayText: () => dropOverlayText
         });
 
-        textarea.dataset.autopluginAttachments = '1';
+        textarea.dataset.bizerbuilderAttachments = '1';
 
         return {
             appendToFormData(formData) {
@@ -547,7 +547,7 @@
         };
     }
 
-    window.wpAutoPluginCommon = {
+    window.wpBizerbuilderCommon = {
         handleStepChange,
         updateCodeEditor,
         sendRequest,

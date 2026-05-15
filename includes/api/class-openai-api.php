@@ -4,15 +4,15 @@
  *
  * Handles communication with the OpenAI API.
  *
- * @package WP-Autoplugin
+ * @package WP-Bizerbuilder
  * @since 1.0.0
  * @version 1.0.5
- * @link https://wp-autoplugin.com
+ * @link https://wp-bizerbuilder.com
  * @license GPL-2.0+
  * @license https://www.gnu.org/licenses/gpl-2.0.html
  */
 
-namespace WP_Autoplugin;
+namespace WP_Bizerbuilder;
 
 if ( ! defined( 'ABSPATH' ) ) {
 	exit;
@@ -163,6 +163,9 @@ class OpenAI_API extends API {
 				'temperature' => 0.2,
 				'max_tokens'  => 4096,
 			],
+			'gpt-5.5'           => [
+				'max_tokens' => 128000,
+			],
 			'gpt-5'             => [
 				'max_tokens' => 128000,
 			],
@@ -221,7 +224,7 @@ class OpenAI_API extends API {
 			$body['reasoning_effort']      = $this->reasoning_effort;
 		} elseif ( 'o1' === $this->model || 'o1-preview' === $this->model ) {
 			$body['max_completion_tokens'] = $this->max_tokens;
-		} elseif ( in_array( $this->model, [ 'gpt-5', 'gpt-5-mini', 'gpt-5-nano', 'gpt-5-codex' ], true ) ) {
+		} elseif ( in_array( $this->model, [ 'gpt-5.5', 'gpt-5', 'gpt-5-mini', 'gpt-5-nano', 'gpt-5-codex' ], true ) ) {
 			$body['max_completion_tokens'] = $this->max_tokens;
 		} else {
 			$body['temperature'] = $this->temperature;

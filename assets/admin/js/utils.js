@@ -38,28 +38,28 @@ function buildAccordion(plan) {
         // Hide testing_plan for now; store it globally for later display.
         if (skipParts.has(part)) {
             if (typeof plan[part] === 'object') {
-                wp_autoplugin.testing_plan = buildSubSections(plan[part]);
+                wp_bizerbuilder.testing_plan = buildSubSections(plan[part]);
             } else {
-                wp_autoplugin.testing_plan = plan[part];
+                wp_bizerbuilder.testing_plan = plan[part];
             }
             continue;
         }
         
         let content = plan[part];
-        let className = 'autoplugin-accordion';
+        let className = 'bizerbuilder-accordion';
         if (part === 'plugin_name') {
             className += ' active';
             hasActive = true;
         }
         accordion += `<div class="${className}">`;
-        accordion += '<h3 class="autoplugin-accordion-heading">';
-        accordion += '<div class="autoplugin-accordion-trigger">';
+        accordion += '<h3 class="bizerbuilder-accordion-heading">';
+        accordion += '<div class="bizerbuilder-accordion-trigger">';
         const partTitle = part.replace(/_/g, ' ').replace(/\b\w/g, letter => letter.toUpperCase());
         accordion += `<span class="title">${partTitle}</span>`;
         accordion += '<span class="icon"></span>';
         accordion += '</div>';
         accordion += '</h3>';
-        accordion += '<div class="autoplugin-accordion-content">';
+        accordion += '<div class="bizerbuilder-accordion-content">';
         
         // Special handling for project_structure
         if (part === 'project_structure') {
@@ -85,7 +85,7 @@ function buildAccordion(plan) {
     // If nothing marked active (e.g. no plugin_name in plan), open the first section
     if (!hasActive) {
         // Add ' active' to the first accordion container
-        accordion = accordion.replace('class="autoplugin-accordion"', 'class="autoplugin-accordion active"');
+        accordion = accordion.replace('class="bizerbuilder-accordion"', 'class="bizerbuilder-accordion active"');
     }
 
     return accordion;
@@ -270,7 +270,7 @@ function typingPlaceholder(inputElement, placeholders) {
  * Simple function to toggle .active on accordion triggers.
  */
 function attachAccordionListeners() {
-    const accordionTriggers = document.querySelectorAll('.autoplugin-accordion-trigger');
+    const accordionTriggers = document.querySelectorAll('.bizerbuilder-accordion-trigger');
     accordionTriggers.forEach(trigger => {
         trigger.addEventListener('click', function () {
             const accordion = this.parentElement.parentElement;
@@ -280,10 +280,10 @@ function attachAccordionListeners() {
 }
 
 /**
- * CMD/CTRL + Enter on a textarea inside a form inside .wp-autoplugin elements submits the form.
+ * CMD/CTRL + Enter on a textarea inside a form inside .wp-bizerbuilder elements submits the form.
  */
 function attachFormSubmitListeners() {
-    document.querySelectorAll('.wp-autoplugin form').forEach(form => {
+    document.querySelectorAll('.wp-bizerbuilder form').forEach(form => {
         form.querySelectorAll('textarea').forEach(textarea => {
             textarea.addEventListener('keydown', function (event) {
                 if ((event.ctrlKey || event.metaKey) && event.key === 'Enter') {

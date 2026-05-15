@@ -1,11 +1,11 @@
 <?php
 /**
- * WP-Autoplugin AJAX Model class.
+ * WP-Bizerbuilder AJAX Model class.
  *
- * @package WP-Autoplugin
+ * @package WP-Bizerbuilder
  */
 
-namespace WP_Autoplugin\Ajax;
+namespace WP_Bizerbuilder\Ajax;
 
 if ( ! defined( 'ABSPATH' ) ) {
 	exit;
@@ -18,14 +18,14 @@ class Model {
 	/**
 	 * The Admin object for accessing specialized model APIs.
 	 *
-	 * @var \WP_Autoplugin\Admin\Admin
+	 * @var \WP_Bizerbuilder\Admin\Admin
 	 */
 	private $admin;
 
 	/**
 	 * Constructor.
 	 *
-	 * @param \WP_Autoplugin\Admin\Admin $admin The admin instance.
+	 * @param \WP_Bizerbuilder\Admin\Admin $admin The admin instance.
 	 */
 	public function __construct( $admin ) {
 		$this->admin = $admin;
@@ -37,13 +37,13 @@ class Model {
 	 * @return void
 	 */
 	public function add_model() {
-		if ( ! check_ajax_referer( 'wp_autoplugin_nonce', 'nonce', false ) ) {
-			wp_send_json_error( [ 'message' => esc_html__( 'Security check failed.', 'wp-autoplugin' ) ] );
+		if ( ! check_ajax_referer( 'wp_bizerbuilder_nonce', 'nonce', false ) ) {
+			wp_send_json_error( [ 'message' => esc_html__( 'Security check failed.', 'wp-bizerbuilder' ) ] );
 		}
 
 		$model = isset( $_POST['model'] ) && is_array( $_POST['model'] ) ? wp_unslash( $_POST['model'] ) : null; // phpcs:ignore WordPress.Security.ValidatedSanitizedInput.InputNotSanitized -- Sanitization is done later, see below.
 		if ( ! $model || ! isset( $model['name'] ) || ! isset( $model['url'] ) || ! isset( $model['apiKey'] ) ) {
-			wp_send_json_error( [ 'message' => esc_html__( 'Invalid model data.', 'wp-autoplugin' ) ] );
+			wp_send_json_error( [ 'message' => esc_html__( 'Invalid model data.', 'wp-bizerbuilder' ) ] );
 		}
 
 		$new_model = [
@@ -56,18 +56,18 @@ class Model {
 				: [],
 		];
 
-		$models = get_option( 'wp_autoplugin_custom_models', [] );
+		$models = get_option( 'wp_bizerbuilder_custom_models', [] );
 		if ( ! is_array( $models ) ) {
 			$models = [];
 		}
 
 		$models[] = $new_model;
-		update_option( 'wp_autoplugin_custom_models', $models );
+		update_option( 'wp_bizerbuilder_custom_models', $models );
 
 		wp_send_json_success(
 			[
 				'models'  => $models,
-				'message' => esc_html__( 'Model added successfully.', 'wp-autoplugin' ),
+				'message' => esc_html__( 'Model added successfully.', 'wp-bizerbuilder' ),
 			]
 		);
 	}
@@ -78,30 +78,30 @@ class Model {
 	 * @return void
 	 */
 	public function remove_model() {
-		if ( ! check_ajax_referer( 'wp_autoplugin_nonce', 'nonce', false ) ) {
-			wp_send_json_error( [ 'message' => esc_html__( 'Security check failed.', 'wp-autoplugin' ) ] );
+		if ( ! check_ajax_referer( 'wp_bizerbuilder_nonce', 'nonce', false ) ) {
+			wp_send_json_error( [ 'message' => esc_html__( 'Security check failed.', 'wp-bizerbuilder' ) ] );
 		}
 
-		$models = get_option( 'wp_autoplugin_custom_models', [] );
+		$models = get_option( 'wp_bizerbuilder_custom_models', [] );
 		if ( ! is_array( $models ) ) {
 			$models = [];
 		}
 
 		$index = isset( $_POST['index'] ) ? intval( wp_unslash( $_POST['index'] ) ) : null;
 		if ( ! is_int( $index ) || $index >= count( $models ) ) {
-			wp_send_json_error( [ 'message' => esc_html__( 'Invalid model index.', 'wp-autoplugin' ) ] );
+			wp_send_json_error( [ 'message' => esc_html__( 'Invalid model index.', 'wp-bizerbuilder' ) ] );
 		}
 
 		if ( isset( $models[ $index ] ) ) {
 			unset( $models[ $index ] );
 		}
 
-		update_option( 'wp_autoplugin_custom_models', $models );
+		update_option( 'wp_bizerbuilder_custom_models', $models );
 
 		wp_send_json_success(
 			[
 				'models'  => $models,
-				'message' => esc_html__( 'Model removed successfully.', 'wp-autoplugin' ),
+				'message' => esc_html__( 'Model removed successfully.', 'wp-bizerbuilder' ),
 			]
 		);
 	}
@@ -113,23 +113,23 @@ class Model {
 	 */
 	public function change_model() {
 		if ( ! current_user_can( 'manage_options' ) ) {
-			wp_send_json_error( [ 'message' => esc_html__( 'You are not allowed to access this page.', 'wp-autoplugin' ) ] );
+			wp_send_json_error( [ 'message' => esc_html__( 'You are not allowed to access this page.', 'wp-bizerbuilder' ) ] );
 		}
 
-		if ( ! check_ajax_referer( 'wp_autoplugin_nonce', 'nonce', false ) ) {
-			wp_send_json_error( [ 'message' => esc_html__( 'Security check failed.', 'wp-autoplugin' ) ] );
+		if ( ! check_ajax_referer( 'wp_bizerbuilder_nonce', 'nonce', false ) ) {
+			wp_send_json_error( [ 'message' => esc_html__( 'Security check failed.', 'wp-bizerbuilder' ) ] );
 		}
 
 		$model = isset( $_POST['model'] ) ? sanitize_text_field( wp_unslash( $_POST['model'] ) ) : '';
 		if ( empty( $model ) ) {
-			wp_send_json_error( [ 'message' => esc_html__( 'No model specified.', 'wp-autoplugin' ) ] );
+			wp_send_json_error( [ 'message' => esc_html__( 'No model specified.', 'wp-bizerbuilder' ) ] );
 		}
 
 		// Validate the model exists in one of the providers or custom models.
 		$valid_model = false;
 
 		// Check built-in models.
-		foreach ( \WP_Autoplugin\Admin\Admin::get_models() as $provider => $models ) {
+		foreach ( \WP_Bizerbuilder\Admin\Admin::get_models() as $provider => $models ) {
 			if ( array_key_exists( $model, $models ) ) {
 				$valid_model = true;
 				break;
@@ -138,7 +138,7 @@ class Model {
 
 		// Check custom models.
 		if ( ! $valid_model ) {
-			$custom_models = get_option( 'wp_autoplugin_custom_models', [] );
+			$custom_models = get_option( 'wp_bizerbuilder_custom_models', [] );
 			foreach ( $custom_models as $custom_model ) {
 				if ( $custom_model['name'] === $model ) {
 					$valid_model = true;
@@ -148,13 +148,13 @@ class Model {
 		}
 
 		if ( ! $valid_model ) {
-			wp_send_json_error( [ 'message' => esc_html__( 'Invalid model specified.', 'wp-autoplugin' ) ] );
+			wp_send_json_error( [ 'message' => esc_html__( 'Invalid model specified.', 'wp-bizerbuilder' ) ] );
 		}
 
 		// Update the model setting.
-		update_option( 'wp_autoplugin_model', $model );
+		update_option( 'wp_bizerbuilder_model', $model );
 
-		wp_send_json_success( [ 'message' => esc_html__( 'Model changed successfully.', 'wp-autoplugin' ) ] );
+		wp_send_json_success( [ 'message' => esc_html__( 'Model changed successfully.', 'wp-bizerbuilder' ) ] );
 	}
 
 	/**
@@ -164,11 +164,11 @@ class Model {
 	 */
 	public function change_models() {
 		if ( ! current_user_can( 'manage_options' ) ) {
-			wp_send_json_error( [ 'message' => esc_html__( 'You are not allowed to access this page.', 'wp-autoplugin' ) ] );
+			wp_send_json_error( [ 'message' => esc_html__( 'You are not allowed to access this page.', 'wp-bizerbuilder' ) ] );
 		}
 
-		if ( ! check_ajax_referer( 'wp_autoplugin_nonce', 'nonce', false ) ) {
-			wp_send_json_error( [ 'message' => esc_html__( 'Security check failed.', 'wp-autoplugin' ) ] );
+		if ( ! check_ajax_referer( 'wp_bizerbuilder_nonce', 'nonce', false ) ) {
+			wp_send_json_error( [ 'message' => esc_html__( 'Security check failed.', 'wp-bizerbuilder' ) ] );
 		}
 
 		$default_model  = isset( $_POST['default_model'] ) ? sanitize_text_field( wp_unslash( $_POST['default_model'] ) ) : '';
@@ -177,7 +177,7 @@ class Model {
 		$reviewer_model = isset( $_POST['reviewer_model'] ) ? sanitize_text_field( wp_unslash( $_POST['reviewer_model'] ) ) : '';
 
 		if ( empty( $default_model ) ) {
-			wp_send_json_error( [ 'message' => esc_html__( 'Default model is required.', 'wp-autoplugin' ) ] );
+			wp_send_json_error( [ 'message' => esc_html__( 'Default model is required.', 'wp-bizerbuilder' ) ] );
 		}
 
 		// Validate all non-empty models.
@@ -186,7 +186,7 @@ class Model {
 			$valid_model = false;
 
 			// Check built-in models.
-			foreach ( \WP_Autoplugin\Admin\Admin::get_models() as $provider => $models ) {
+			foreach ( \WP_Bizerbuilder\Admin\Admin::get_models() as $provider => $models ) {
 				if ( array_key_exists( $model, $models ) ) {
 					$valid_model = true;
 					break;
@@ -195,7 +195,7 @@ class Model {
 
 			// Check custom models.
 			if ( ! $valid_model ) {
-				$custom_models = get_option( 'wp_autoplugin_custom_models', [] );
+				$custom_models = get_option( 'wp_bizerbuilder_custom_models', [] );
 				foreach ( $custom_models as $custom_model ) {
 					if ( $custom_model['name'] === $model ) {
 						$valid_model = true;
@@ -206,16 +206,16 @@ class Model {
 
 			if ( ! $valid_model ) {
 				// Translators: %s: model name.
-				wp_send_json_error( [ 'message' => sprintf( esc_html__( 'Invalid model specified: %s', 'wp-autoplugin' ), $model ) ] );
+				wp_send_json_error( [ 'message' => sprintf( esc_html__( 'Invalid model specified: %s', 'wp-bizerbuilder' ), $model ) ] );
 			}
 		}
 
 		// Update all model settings.
-		update_option( 'wp_autoplugin_model', $default_model );
-		update_option( 'wp_autoplugin_planner_model', $planner_model );
-		update_option( 'wp_autoplugin_coder_model', $coder_model );
-		update_option( 'wp_autoplugin_reviewer_model', $reviewer_model );
+		update_option( 'wp_bizerbuilder_model', $default_model );
+		update_option( 'wp_bizerbuilder_planner_model', $planner_model );
+		update_option( 'wp_bizerbuilder_coder_model', $coder_model );
+		update_option( 'wp_bizerbuilder_reviewer_model', $reviewer_model );
 
-		wp_send_json_success( [ 'message' => esc_html__( 'Models updated successfully.', 'wp-autoplugin' ) ] );
+		wp_send_json_success( [ 'message' => esc_html__( 'Models updated successfully.', 'wp-bizerbuilder' ) ] );
 	}
 }

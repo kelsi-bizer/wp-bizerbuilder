@@ -1,16 +1,16 @@
 <?php
 /**
- * Autoplugin Installer class.
+ * Bizerbuilder Installer class.
  *
- * @package WP-Autoplugin
+ * @package WP-Bizerbuilder
  * @since 1.0.0
  * @version 1.0.5
- * @link https://wp-autoplugin.com
+ * @link https://wp-bizerbuilder.com
  * @license GPL-2.0+
  * @license https://www.gnu.org/licenses/gpl-2.0.html
  */
 
-namespace WP_Autoplugin;
+namespace WP_Bizerbuilder;
 
 if ( ! defined( 'ABSPATH' ) ) {
 	exit;
@@ -51,7 +51,7 @@ class Plugin_Installer {
 	public function install_plugin( $code, $plugin_name ) {
 		// If DISALLOW_FILE_MODS is set, we can't install plugins.
 		if ( defined( 'DISALLOW_FILE_MODS' ) && DISALLOW_FILE_MODS ) {
-			return new \WP_Error( 'file_mods_disabled', __( 'Plugin installation is disabled.', 'wp-autoplugin' ) );
+			return new \WP_Error( 'file_mods_disabled', __( 'Plugin installation is disabled.', 'wp-bizerbuilder' ) );
 		}
 
 		// Initialize WP_Filesystem.
@@ -66,14 +66,14 @@ class Plugin_Installer {
 			// Treat as update to an existing plugin file path relative to WP_PLUGIN_DIR.
 			$clean_rel = wp_normalize_path( $plugin_name );
 			if ( strpos( $clean_rel, '../' ) !== false ) {
-				return new \WP_Error( 'invalid_path', __( 'Plugin path cannot contain "../".', 'wp-autoplugin' ) );
+				return new \WP_Error( 'invalid_path', __( 'Plugin path cannot contain "../".', 'wp-bizerbuilder' ) );
 			}
 			$plugin_file = WP_PLUGIN_DIR . '/' . $clean_rel;
 			if ( ! $wp_filesystem->exists( $plugin_file ) ) {
-				return new \WP_Error( 'file_not_found', __( 'Error updating plugin file: file does not exist.', 'wp-autoplugin' ) );
+				return new \WP_Error( 'file_not_found', __( 'Error updating plugin file: file does not exist.', 'wp-bizerbuilder' ) );
 			}
 		} else {
-			$plugin_name = sanitize_title( $plugin_name, 'wp-autoplugin-' . md5( $code ) );
+			$plugin_name = sanitize_title( $plugin_name, 'wp-bizerbuilder-' . md5( $code ) );
 			$plugin_dir  = WP_PLUGIN_DIR . '/' . $plugin_name . '/';
 			if ( ! $wp_filesystem->exists( $plugin_dir ) ) {
 				$wp_filesystem->mkdir( $plugin_dir, 0755, true );
@@ -83,14 +83,14 @@ class Plugin_Installer {
 
 		$result = $wp_filesystem->put_contents( $plugin_file, $code, FS_CHMOD_FILE );
 		if ( false === $result ) {
-			return new \WP_Error( 'file_creation_error', __( 'Error creating plugin file.', 'wp-autoplugin' ) );
+			return new \WP_Error( 'file_creation_error', __( 'Error creating plugin file.', 'wp-bizerbuilder' ) );
 		}
 
-		// Add the plugin to the list of autoplugins.
-		$autoplugins   = get_option( 'wp_autoplugins', [] );
-		$autoplugins[] = $plugin_name . '/index.php';
-		$autoplugins   = array_values( array_unique( $autoplugins ) );
-		update_option( 'wp_autoplugins', $autoplugins );
+		// Add the plugin to the list of bizerbuilders.
+		$bizerbuilders   = get_option( 'wp_bizerbuilders', [] );
+		$bizerbuilders[] = $plugin_name . '/index.php';
+		$bizerbuilders   = array_values( array_unique( $bizerbuilders ) );
+		update_option( 'wp_bizerbuilders', $bizerbuilders );
 
 		return $plugin_name . '/index.php';
 	}
@@ -177,7 +177,7 @@ class Plugin_Installer {
 	public function install_complex_plugin( $plugin_name, $project_structure, $generated_files ) {
 		// If DISALLOW_FILE_MODS is set, we can't install plugins.
 		if ( defined( 'DISALLOW_FILE_MODS' ) && DISALLOW_FILE_MODS ) {
-			return new \WP_Error( 'file_mods_disabled', __( 'Plugin installation is disabled.', 'wp-autoplugin' ) );
+			return new \WP_Error( 'file_mods_disabled', __( 'Plugin installation is disabled.', 'wp-bizerbuilder' ) );
 		}
 
 		// Initialize WP_Filesystem.
@@ -190,7 +190,7 @@ class Plugin_Installer {
 		// Normalize file paths to remove common directory prefix.
 		list( $project_structure, $generated_files ) = $this->normalize_file_paths( $project_structure, $generated_files );
 
-		$plugin_name = sanitize_title( $plugin_name, 'wp-autoplugin-' . md5( wp_json_encode( $generated_files ) ) );
+		$plugin_name = sanitize_title( $plugin_name, 'wp-bizerbuilder-' . md5( wp_json_encode( $generated_files ) ) );
 		$plugin_dir  = wp_normalize_path( WP_PLUGIN_DIR . '/' . $plugin_name . '/' );
 
 		// Create plugin directory if it doesn't exist.
@@ -203,7 +203,7 @@ class Plugin_Installer {
 			foreach ( $project_structure['directories'] as $directory ) {
 				$directory = wp_normalize_path( $directory );
 				if ( strpos( $directory, '../' ) !== false ) {
-					return new \WP_Error( 'invalid_path', __( 'Invalid directory path.', 'wp-autoplugin' ) );
+					return new \WP_Error( 'invalid_path', __( 'Invalid directory path.', 'wp-bizerbuilder' ) );
 				}
 				$dir_path = $plugin_dir . $directory;
 				if ( ! $wp_filesystem->exists( $dir_path ) ) {
@@ -218,14 +218,14 @@ class Plugin_Installer {
 			foreach ( $project_structure['files'] as $file_info ) {
 				$file_path = wp_normalize_path( $file_info['path'] );
 				if ( strpos( $file_path, '../' ) !== false ) {
-					return new \WP_Error( 'invalid_path', __( 'Invalid file path.', 'wp-autoplugin' ) );
+					return new \WP_Error( 'invalid_path', __( 'Invalid file path.', 'wp-bizerbuilder' ) );
 				}
 				$file_path    = $plugin_dir . $file_path;
 				$file_content = isset( $generated_files[ $file_info['path'] ] ) ? $generated_files[ $file_info['path'] ] : '';
 
 				if ( empty( $file_content ) ) {
 					// Translators: %s: file path.
-					return new \WP_Error( 'missing_file_content', sprintf( __( 'Missing content for file: %s', 'wp-autoplugin' ), $file_info['path'] ) );
+					return new \WP_Error( 'missing_file_content', sprintf( __( 'Missing content for file: %s', 'wp-bizerbuilder' ), $file_info['path'] ) );
 				}
 
 				// Create directory for the file if it doesn't exist
@@ -237,7 +237,7 @@ class Plugin_Installer {
 				$result = $wp_filesystem->put_contents( $file_path, $file_content, FS_CHMOD_FILE );
 				if ( false === $result ) {
 					// Translators: %s: file path.
-					return new \WP_Error( 'file_creation_error', sprintf( __( 'Error creating file: %s', 'wp-autoplugin' ), $file_info['path'] ) );
+					return new \WP_Error( 'file_creation_error', sprintf( __( 'Error creating file: %s', 'wp-bizerbuilder' ), $file_info['path'] ) );
 				}
 
 				// Identify the main plugin file (should be in root and end with .php)
@@ -260,14 +260,14 @@ class Plugin_Installer {
 		}
 
 		if ( empty( $main_file ) ) {
-			return new \WP_Error( 'no_main_file', __( 'No main plugin file found.', 'wp-autoplugin' ) );
+			return new \WP_Error( 'no_main_file', __( 'No main plugin file found.', 'wp-bizerbuilder' ) );
 		}
 
-		// Add the plugin to the list of autoplugins
-		$autoplugins   = get_option( 'wp_autoplugins', [] );
-		$autoplugins[] = $plugin_name . '/' . $main_file;
-		$autoplugins   = array_values( array_unique( $autoplugins ) );
-		update_option( 'wp_autoplugins', $autoplugins );
+		// Add the plugin to the list of bizerbuilders
+		$bizerbuilders   = get_option( 'wp_bizerbuilders', [] );
+		$bizerbuilders[] = $plugin_name . '/' . $main_file;
+		$bizerbuilders   = array_values( array_unique( $bizerbuilders ) );
+		update_option( 'wp_bizerbuilders', $bizerbuilders );
 
 		return $plugin_name . '/' . $main_file;
 	}
@@ -282,7 +282,7 @@ class Plugin_Installer {
 	public function update_existing_plugin_files( $plugin_file, $files_map ) {
 		// If DISALLOW_FILE_MODS is set, we can't modify plugins.
 		if ( defined( 'DISALLOW_FILE_MODS' ) && DISALLOW_FILE_MODS ) {
-			return new \WP_Error( 'file_mods_disabled', __( 'Plugin modification is disabled.', 'wp-autoplugin' ) );
+			return new \WP_Error( 'file_mods_disabled', __( 'Plugin modification is disabled.', 'wp-bizerbuilder' ) );
 		}
 
 		// Initialize WP_Filesystem.
@@ -295,13 +295,13 @@ class Plugin_Installer {
 		// Sanitize and constrain plugin root inside plugins directory.
 		$plugin_file = wp_normalize_path( $plugin_file );
 		if ( strpos( $plugin_file, '../' ) !== false ) {
-			return new \WP_Error( 'invalid_path', __( 'Plugin path cannot contain "../".', 'wp-autoplugin' ) );
+			return new \WP_Error( 'invalid_path', __( 'Plugin path cannot contain "../".', 'wp-bizerbuilder' ) );
 		}
 		$plugin_root_rel = dirname( $plugin_file );
 		$plugin_root_abs = wp_normalize_path( WP_PLUGIN_DIR . '/' . $plugin_root_rel . '/' );
 
 		if ( ! $wp_filesystem->is_dir( $plugin_root_abs ) ) {
-			return new \WP_Error( 'invalid_plugin_dir', __( 'Target plugin directory does not exist.', 'wp-autoplugin' ) );
+			return new \WP_Error( 'invalid_plugin_dir', __( 'Target plugin directory does not exist.', 'wp-bizerbuilder' ) );
 		}
 
 		$allowed_ext = [ 'php', 'css', 'js' ];
@@ -309,7 +309,7 @@ class Plugin_Installer {
 		foreach ( $files_map as $rel_path => $contents ) {
 			$rel_path = wp_normalize_path( $rel_path );
 			if ( strpos( $rel_path, '../' ) !== false ) {
-				return new \WP_Error( 'invalid_path', __( 'Invalid file path.', 'wp-autoplugin' ) );
+				return new \WP_Error( 'invalid_path', __( 'Invalid file path.', 'wp-bizerbuilder' ) );
 			}
 			// Ensure path stays inside plugin directory
 			if ( strpos( $rel_path, $plugin_root_rel . '/' ) === 0 ) {
@@ -320,7 +320,7 @@ class Plugin_Installer {
 			$ext = strtolower( pathinfo( $target_path, PATHINFO_EXTENSION ) );
 			if ( ! in_array( $ext, $allowed_ext, true ) ) {
 				// Translators: %s: file path.
-				return new \WP_Error( 'invalid_file_type', sprintf( __( 'Unsupported file type for update: %s', 'wp-autoplugin' ), $rel_path ) );
+				return new \WP_Error( 'invalid_file_type', sprintf( __( 'Unsupported file type for update: %s', 'wp-bizerbuilder' ), $rel_path ) );
 			}
 
 			// Ensure directory exists
@@ -332,7 +332,7 @@ class Plugin_Installer {
 			$result = $wp_filesystem->put_contents( $target_path, (string) $contents, FS_CHMOD_FILE );
 			if ( false === $result ) {
 				// Translators: %s: file path.
-				return new \WP_Error( 'file_write_error', sprintf( __( 'Failed to write file: %s', 'wp-autoplugin' ), $rel_path ) );
+				return new \WP_Error( 'file_write_error', sprintf( __( 'Failed to write file: %s', 'wp-bizerbuilder' ), $rel_path ) );
 			}
 		}
 
@@ -346,10 +346,10 @@ class Plugin_Installer {
 	 * @return void
 	 */
 	public function activate_plugin( $plugin ) {
-		$autoplugins = get_option( 'wp_autoplugins', [] );
+		$bizerbuilders = get_option( 'wp_bizerbuilders', [] );
 		// Use strict in_array check.
-		if ( ! in_array( $plugin, $autoplugins, true ) ) {
-			wp_send_json_error( esc_html__( 'Plugin not found.', 'wp-autoplugin' ) );
+		if ( ! in_array( $plugin, $bizerbuilders, true ) ) {
+			wp_send_json_error( esc_html__( 'Plugin not found.', 'wp-bizerbuilder' ) );
 		}
 
 		// Hide PHP errors without silencing.
@@ -366,13 +366,13 @@ class Plugin_Installer {
 					// Capture the fatal error message.
 					$error_message = $error['message'];
 					update_option(
-						'wp_autoplugin_fatal_error',
+						'wp_bizerbuilder_fatal_error',
 						[
 							'plugin' => $plugin,
 							'error'  => $error_message,
 						]
 					);
-					echo '<meta http-equiv="refresh" content="0;url=' . esc_url( admin_url( 'admin.php?page=wp-autoplugin' ) ) . '">';
+					echo '<meta http-equiv="refresh" content="0;url=' . esc_url( admin_url( 'admin.php?page=wp-bizerbuilder' ) ) . '">';
 					exit;
 				}
 			}
@@ -387,7 +387,7 @@ class Plugin_Installer {
 			);
 
 			include_once ABSPATH . 'wp-admin/includes/plugin.php';
-			activate_plugin( $plugin, admin_url( 'admin.php?page=wp-autoplugin&plugin=' . rawurlencode( $plugin ) ) );
+			activate_plugin( $plugin, admin_url( 'admin.php?page=wp-bizerbuilder&plugin=' . rawurlencode( $plugin ) ) );
 
 			ob_end_clean();
 			restore_error_handler();
@@ -396,37 +396,37 @@ class Plugin_Installer {
 			$output = ob_get_clean();
 			restore_error_handler();
 			$error_message = $e->getMessage();
-			update_option( 'wp_autoplugin_fatal_error', $error_message );
-			wp_safe_redirect( esc_url( admin_url( 'admin.php?page=wp-autoplugin' ) ) );
+			update_option( 'wp_bizerbuilder_fatal_error', $error_message );
+			wp_safe_redirect( esc_url( admin_url( 'admin.php?page=wp-bizerbuilder' ) ) );
 			exit;
 		}
 
 		ob_end_clean();
 		restore_error_handler();
 
-		Admin\Notices::add_notice( esc_html__( 'Plugin activated successfully.', 'wp-autoplugin' ), 'success' );
-		wp_safe_redirect( esc_url( admin_url( 'admin.php?page=wp-autoplugin' ) ) );
+		Admin\Notices::add_notice( esc_html__( 'Plugin activated successfully.', 'wp-bizerbuilder' ), 'success' );
+		wp_safe_redirect( esc_url( admin_url( 'admin.php?page=wp-bizerbuilder' ) ) );
 		exit;
 	}
 
 	/**
-	 * Deactivate a plugin and redirect to the autoplugins list page.
+	 * Deactivate a plugin and redirect to the bizerbuilders list page.
 	 *
 	 * @param string $plugin The plugin file.
 	 *
 	 * @return void
 	 */
 	public function deactivate_plugin( $plugin ) {
-		$autoplugins = get_option( 'wp_autoplugins', [] );
-		if ( ! in_array( $plugin, $autoplugins, true ) ) {
-			wp_send_json_error( esc_html__( 'Plugin not found.', 'wp-autoplugin' ) ); // Plugin not found.
+		$bizerbuilders = get_option( 'wp_bizerbuilders', [] );
+		if ( ! in_array( $plugin, $bizerbuilders, true ) ) {
+			wp_send_json_error( esc_html__( 'Plugin not found.', 'wp-bizerbuilder' ) ); // Plugin not found.
 		}
 
 		include_once ABSPATH . 'wp-admin/includes/plugin.php';
 		deactivate_plugins( $plugin );
 
-		Admin\Notices::add_notice( esc_html__( 'Plugin deactivated successfully.', 'wp-autoplugin' ), 'success' );
-		wp_safe_redirect( esc_url( admin_url( 'admin.php?page=wp-autoplugin' ) ) );
+		Admin\Notices::add_notice( esc_html__( 'Plugin deactivated successfully.', 'wp-bizerbuilder' ), 'success' );
+		wp_safe_redirect( esc_url( admin_url( 'admin.php?page=wp-bizerbuilder' ) ) );
 		exit;
 	}
 
@@ -438,9 +438,9 @@ class Plugin_Installer {
 	 * @return void
 	 */
 	public function delete_plugin( $plugin ) {
-		$autoplugins = get_option( 'wp_autoplugins', [] );
-		if ( ! in_array( $plugin, $autoplugins, true ) ) {
-			wp_send_json_error( esc_html__( 'Plugin not found.', 'wp-autoplugin' ) ); // Plugin not found.
+		$bizerbuilders = get_option( 'wp_bizerbuilders', [] );
+		if ( ! in_array( $plugin, $bizerbuilders, true ) ) {
+			wp_send_json_error( esc_html__( 'Plugin not found.', 'wp-bizerbuilder' ) ); // Plugin not found.
 		}
 
 		include_once ABSPATH . 'wp-admin/includes/plugin.php';
@@ -449,13 +449,13 @@ class Plugin_Installer {
 		$deleted = delete_plugins( [ $plugin ] );
 		if ( is_wp_error( $deleted ) ) {
 			// Translators: %s: error message.
-			Admin\Notices::add_notice( sprintf( esc_html__( 'Error deleting plugin: %s', 'wp-autoplugin' ), $deleted->get_error_message() ), 'error' );
+			Admin\Notices::add_notice( sprintf( esc_html__( 'Error deleting plugin: %s', 'wp-bizerbuilder' ), $deleted->get_error_message() ), 'error' );
 		} else {
-			$autoplugins = array_diff( $autoplugins, [ $plugin ] );
-			update_option( 'wp_autoplugins', $autoplugins );
-			Admin\Notices::add_notice( esc_html__( 'Plugin deleted successfully.', 'wp-autoplugin' ), 'success' );
+			$bizerbuilders = array_diff( $bizerbuilders, [ $plugin ] );
+			update_option( 'wp_bizerbuilders', $bizerbuilders );
+			Admin\Notices::add_notice( esc_html__( 'Plugin deleted successfully.', 'wp-bizerbuilder' ), 'success' );
 		}
-		wp_safe_redirect( esc_url( admin_url( 'admin.php?page=wp-autoplugin' ) ) );
+		wp_safe_redirect( esc_url( admin_url( 'admin.php?page=wp-bizerbuilder' ) ) );
 		exit;
 	}
 }

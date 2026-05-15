@@ -1,16 +1,16 @@
 <?php
 /**
- * Autoplugin Generator class.
+ * Bizerbuilder Generator class.
  *
- * @package WP-Autoplugin
+ * @package WP-Bizerbuilder
  * @since 1.0.0
  * @version 1.0.5
- * @link https://wp-autoplugin.com
+ * @link https://wp-bizerbuilder.com
  * @license GPL-2.0+
  * @license https://www.gnu.org/licenses/gpl-2.0.html
  */
 
-namespace WP_Autoplugin;
+namespace WP_Bizerbuilder;
 
 if ( ! defined( 'ABSPATH' ) ) {
 	exit;
@@ -45,7 +45,7 @@ class Plugin_Generator {
 	 * @return string|WP_Error
 	 */
 	public function generate_plugin_plan( $input, $prompt_images = [] ) {
-		$plugin_mode = get_option( 'wp_autoplugin_plugin_mode', 'simple' );
+		$plugin_mode = get_option( 'wp_bizerbuilder_plugin_mode', 'simple' );
 
 		if ( 'complex' === $plugin_mode ) {
 			return $this->generate_complex_plugin_plan( $input, $prompt_images );
@@ -150,7 +150,7 @@ class Plugin_Generator {
 	 * @return string|WP_Error
 	 */
 	public function generate_plugin_code( $plan ) {
-		$plugin_mode = get_option( 'wp_autoplugin_plugin_mode', 'simple' );
+		$plugin_mode = get_option( 'wp_bizerbuilder_plugin_mode', 'simple' );
 
 		if ( 'complex' === $plugin_mode ) {
 			// For complex mode, this method shouldn't be used directly
@@ -165,7 +165,7 @@ class Plugin_Generator {
 			$plan
 			```
 
-			Important: all code should be self-contained within one PHP file and follow WordPress coding standards. Use inline Javascript and CSS, inside the main PHP file. Additional CSS or JS files cannot be included. Use appropriate WP hooks, actions, and filters as necessary. Always use "WP-Autoplugin" for the Author of the plugin, with Author URI: https://wp-autoplugin.com. Do not add the final closing "?>" tag in the PHP file.
+			Important: all code should be self-contained within one PHP file and follow WordPress coding standards. Use inline Javascript and CSS, inside the main PHP file. Additional CSS or JS files cannot be included. Use appropriate WP hooks, actions, and filters as necessary. Always use "WP-Bizerbuilder" for the Author of the plugin, and do not include an Author URI. Do not add the final closing "?>" tag in the PHP file.
 			PROMPT;
 
 		return $this->ai_api->send_prompt( $prompt );
@@ -229,7 +229,7 @@ class Plugin_Generator {
 			- Follow WordPress coding standards and use tabs for indentation
 			- Use appropriate PHP namespaces and class structures
 			- Include proper WordPress security measures (nonces, capability checks, sanitization)
-			- Use "WP-Autoplugin" as the plugin author with Author URI: https://wp-autoplugin.com
+			- Use "WP-Bizerbuilder" as the plugin author and do not include an Author URI
 			- Do not add the final closing "?>" tag in PHP files
 			- Ensure the code is complete and functional – do not add placeholders
 			- Ensure the code complements the overall plugin plan and works seamlessly with other files

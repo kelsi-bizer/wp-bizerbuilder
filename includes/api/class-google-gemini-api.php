@@ -2,15 +2,15 @@
 /**
  * Google Gemini API class.
  *
- * @package WP-Autoplugin
+ * @package WP-Bizerbuilder
  * @since 1.0.0
  * @version 1.0.5
- * @link https://wp-autoplugin.com
+ * @link https://wp-bizerbuilder.com
  * @license GPL-2.0+
  * @license https://www.gnu.org/licenses/gpl-2.0.html
  */
 
-namespace WP_Autoplugin;
+namespace WP_Bizerbuilder;
 
 if ( ! defined( 'ABSPATH' ) ) {
 	exit;

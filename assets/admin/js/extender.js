@@ -21,7 +21,7 @@
     const contentContainer    = document.getElementById('file-content');
     const issueField          = document.getElementById('plugin_issue');
 
-    const promptAttachments = wpAutoPluginCommon.initPromptAttachments({
+    const promptAttachments = wpBizerbuilderCommon.initPromptAttachments({
         textarea: issueField,
         modelKey: 'planner'
     });
@@ -68,7 +68,7 @@
             } else {
                 // Fallback single file
                 pluginCodeTextarea.value = pluginCode;
-                editorInstance = wpAutoPluginCommon.updateCodeEditor(editorInstance, pluginCodeTextarea, pluginCode);
+                editorInstance = wpBizerbuilderCommon.updateCodeEditor(editorInstance, pluginCodeTextarea, pluginCode);
             }
         }
     };
@@ -80,30 +80,30 @@
 
         const issueValue = issueField.value.trim();
         if (issueValue === '' && !promptAttachments.hasImages()) {
-            messageGeneratePlan.innerHTML = wp_autoplugin.messages.empty_description;
+            messageGeneratePlan.innerHTML = wp_bizerbuilder.messages.empty_description;
             return;
         }
 
         generatePlanForm.parentElement.classList.add('loading');
         issueDescription = issueField.value;
 
-        const loader = loadingIndicator(messageGeneratePlan, wp_autoplugin.messages.generating_plan);
+        const loader = loadingIndicator(messageGeneratePlan, wp_bizerbuilder.messages.generating_plan);
         loader.start();
 
         const formData = new FormData();
-        formData.append('action', 'wp_autoplugin_generate_extend_plan');
+        formData.append('action', 'wp_bizerbuilder_generate_extend_plan');
         formData.append('plugin_issue', issueDescription);
         formData.append('plugin_file', document.getElementById('plugin_file').value);
-        formData.append('security', wp_autoplugin.nonce);
+        formData.append('security', wp_bizerbuilder.nonce);
         promptAttachments.appendToFormData(formData);
 
         try {
-            const response = await wpAutoPluginCommon.sendRequest(formData);
+            const response = await wpBizerbuilderCommon.sendRequest(formData);
             loader.stop();
             generatePlanForm.parentElement.classList.remove('loading');
 
             if (!response.success) {
-                messageGeneratePlan.innerHTML = wp_autoplugin.messages.plan_generation_error + ' <pre>' + response.data + '</pre>';
+                messageGeneratePlan.innerHTML = wp_bizerbuilder.messages.plan_generation_error + ' <pre>' + response.data + '</pre>';
                 return;
             }
 
@@ -132,11 +132,11 @@
             }
             
             currentState = 'reviewPlan';
-            wpAutoPluginCommon.handleStepChange(steps, 'reviewPlan', onShowStep);
+            wpBizerbuilderCommon.handleStepChange(steps, 'reviewPlan', onShowStep);
         } catch (error) {
             loader.stop();
             generatePlanForm.parentElement.classList.remove('loading');
-            messageGeneratePlan.innerHTML = wp_autoplugin.messages.plan_generation_error + ' <pre>' + error.message + '</pre>';
+            messageGeneratePlan.innerHTML = wp_bizerbuilder.messages.plan_generation_error + ' <pre>' + error.message + '</pre>';
         }
     }
 
@@ -144,16 +144,16 @@
         event.preventDefault();
 
         generateCodeForm.parentElement.classList.add('loading');
-        const loader = loadingIndicator(messageReviewPlan, wp_autoplugin.messages.generating_code);
+        const loader = loadingIndicator(messageReviewPlan, wp_bizerbuilder.messages.generating_code);
         loader.start();
 
         // Rebuild plan from accordion inputs (plan_summary text + project_structure file descriptions)
         const planOut = (typeof pluginPlan === 'object' && pluginPlan) ? JSON.parse(JSON.stringify(pluginPlan)) : {};
         // Update text/textarea fields
-        document.querySelectorAll('#plugin_plan_container .autoplugin-accordion').forEach(acc => {
-            const title = acc.querySelector('.autoplugin-accordion-heading .title')?.textContent?.trim().toLowerCase().replace(/ /g, '_');
-            const input = acc.querySelector('.autoplugin-accordion-content input');
-            const textarea = acc.querySelector('.autoplugin-accordion-content textarea');
+        document.querySelectorAll('#plugin_plan_container .bizerbuilder-accordion').forEach(acc => {
+            const title = acc.querySelector('.bizerbuilder-accordion-heading .title')?.textContent?.trim().toLowerCase().replace(/ /g, '_');
+            const input = acc.querySelector('.bizerbuilder-accordion-content input');
+            const textarea = acc.querySelector('.bizerbuilder-accordion-content textarea');
             // Do NOT overwrite project_structure from a single input inside the table; keep the object.
             if (title === 'project_structure') {
                 // handled below via file-description inputs
@@ -188,14 +188,14 @@
         loader.stop();
         generateCodeForm.parentElement.classList.remove('loading');
         currentState = 'reviewCode';
-        wpAutoPluginCommon.handleStepChange(steps, 'reviewCode', onShowStep);
+        wpBizerbuilderCommon.handleStepChange(steps, 'reviewCode', onShowStep);
     }
 
     async function handleCreatePluginSubmit(event) {
         event.preventDefault();
 
         createPluginForm.parentElement.classList.add('loading');
-        const loader = loadingIndicator(messageReviewCode, wp_autoplugin.messages.creating_plugin);
+        const loader = loadingIndicator(messageReviewCode, wp_bizerbuilder.messages.creating_plugin);
         loader.start();
 
         // Collect current editor contents into a files map
@@ -214,34 +214,34 @@
         const payload = JSON.stringify({ files: updatedFiles });
 
         const formData = new FormData();
-        formData.append('action', 'wp_autoplugin_extend_plugin');
+        formData.append('action', 'wp_bizerbuilder_extend_plugin');
         formData.append('plugin_issue', issueDescription);
         formData.append('plugin_file', document.getElementById('plugin_file').value);
         formData.append('plugin_code', payload);
-        formData.append('security', wp_autoplugin.nonce);
+        formData.append('security', wp_bizerbuilder.nonce);
 
         try {
-            const response = await wpAutoPluginCommon.sendRequest(formData);
+            const response = await wpBizerbuilderCommon.sendRequest(formData);
             loader.stop();
             createPluginForm.parentElement.classList.remove('loading');
 
             if (!response.success) {
-                messageReviewCode.innerHTML = wp_autoplugin.messages.plugin_creation_error + ' <pre>' + response.data + '</pre>';
+                messageReviewCode.innerHTML = wp_bizerbuilder.messages.plugin_creation_error + ' <pre>' + response.data + '</pre>';
                 return;
             }
 
-            let activateBtnHtml = `<div style="margin-top: 10px;"><a href="${wp_autoplugin.activate_url}&plugin=${response.data}" class="button button-primary">${wp_autoplugin.messages.activate}</a></div>`;
-            if (wp_autoplugin.is_plugin_active) {
+            let activateBtnHtml = `<div style="margin-top: 10px;"><a href="${wp_bizerbuilder.activate_url}&plugin=${response.data}" class="button button-primary">${wp_bizerbuilder.messages.activate}</a></div>`;
+            if (wp_bizerbuilder.is_plugin_active) {
                 activateBtnHtml = '';
             }
-            messageReviewCode.innerHTML = wp_autoplugin.messages.code_updated + activateBtnHtml;
+            messageReviewCode.innerHTML = wp_bizerbuilder.messages.code_updated + activateBtnHtml;
 
             // Hide the form
             createPluginForm.style.display = 'none';
         } catch (error) {
             loader.stop();
             createPluginForm.parentElement.classList.remove('loading');
-            messageReviewCode.innerHTML = wp_autoplugin.messages.plugin_creation_error + ' <pre>' + error.message + '</pre>';
+            messageReviewCode.innerHTML = wp_bizerbuilder.messages.plugin_creation_error + ' <pre>' + error.message + '</pre>';
         }
     }
 
@@ -257,7 +257,7 @@
         if (window.addTokenUsage) {
             var currentStep = document.body.getAttribute('data-current-step') || stepName;
             var modelType = window.getModelForStep ? window.getModelForStep(currentStep) : 'default';
-            var modelName = window.wpAutopluginModels ? window.wpAutopluginModels[modelType] : 'Unknown';
+            var modelName = window.wpBizerbuilderModels ? window.wpBizerbuilderModels[modelType] : 'Unknown';
             window.addTokenUsage(stepName, modelName, inputTokens, outputTokens);
         }
     }
@@ -270,25 +270,25 @@
     // "Edit" buttons
     document.getElementById('edit-issue').addEventListener('click', function() {
         currentState = 'generatePlan';
-        wpAutoPluginCommon.handleStepChange(steps, 'generatePlan', onShowStep);
+        wpBizerbuilderCommon.handleStepChange(steps, 'generatePlan', onShowStep);
     });
 
     document.getElementById('edit-plan').addEventListener('click', function() {
         currentState = 'reviewPlan';
-        wpAutoPluginCommon.handleStepChange(steps, 'reviewPlan', onShowStep);
+        wpBizerbuilderCommon.handleStepChange(steps, 'reviewPlan', onShowStep);
     });
 
     // Handle back button in browser
     window.addEventListener('popstate', function(event) {
         if (event.state && event.state.state) {
-            wpAutoPluginCommon.handleStepChange(steps, event.state.state, onShowStep);
+            wpBizerbuilderCommon.handleStepChange(steps, event.state.state, onShowStep);
         } else {
-            wpAutoPluginCommon.handleStepChange(steps, 'generatePlan', onShowStep);
+            wpBizerbuilderCommon.handleStepChange(steps, 'generatePlan', onShowStep);
         }
     });
 
     // Initialize the first step
-    wpAutoPluginCommon.handleStepChange(steps, 'generatePlan', onShowStep);
+    wpBizerbuilderCommon.handleStepChange(steps, 'generatePlan', onShowStep);
 
     // Initialize the submit handlers
     attachFormSubmitListeners();
@@ -348,7 +348,7 @@
             contentContainer.appendChild(wrapper);
 
             // Initialize editor (use PHP mode globally for simplicity)
-            fileEditors[path] = wpAutoPluginCommon.updateCodeEditor(null, textarea, textarea.value);
+            fileEditors[path] = wpBizerbuilderCommon.updateCodeEditor(null, textarea, textarea.value);
         });
     }
 
@@ -442,19 +442,19 @@
         if (status) status.className = 'status-indicator generating';
 
         const formData = new FormData();
-        formData.append('action', 'wp_autoplugin_generate_extend_file');
+        formData.append('action', 'wp_bizerbuilder_generate_extend_file');
         formData.append('file_index', currentFileIndex);
         formData.append('plugin_plan', JSON.stringify(pluginPlan));
         formData.append('project_structure', JSON.stringify(projectStructure));
         formData.append('generated_files', JSON.stringify(generatedFiles));
         formData.append('plugin_file', document.getElementById('plugin_file').value);
-        formData.append('security', wp_autoplugin.nonce);
+        formData.append('security', wp_bizerbuilder.nonce);
 
         try {
-            const response = await wpAutoPluginCommon.sendRequest(formData);
+            const response = await wpBizerbuilderCommon.sendRequest(formData);
             if (!response.success) {
                 if (status) { status.className = 'status-indicator error'; status.title = response.data; }
-                messageReviewCode.innerHTML = wp_autoplugin.messages.code_generation_error + ' <pre>' + response.data + '</pre>';
+                messageReviewCode.innerHTML = wp_bizerbuilder.messages.code_generation_error + ' <pre>' + response.data + '</pre>';
                 return;
             }
             if (status) status.className = 'status-indicator generated';
@@ -471,7 +471,7 @@
             const editorEl = document.querySelector(`.file-editor[data-file="${CSS.escape(file.path)}"] textarea`);
             if (editorEl) {
                 editorEl.value = response.data.file_content;
-                fileEditors[file.path] = wpAutoPluginCommon.updateCodeEditor(fileEditors[file.path] || null, editorEl, response.data.file_content);
+                fileEditors[file.path] = wpBizerbuilderCommon.updateCodeEditor(fileEditors[file.path] || null, editorEl, response.data.file_content);
                 if (fileEditors[file.path] && fileEditors[file.path].codemirror) {
                     setTimeout(() => fileEditors[file.path].codemirror.refresh(), 50);
                 }
@@ -481,7 +481,7 @@
             await generateNextFile();
         } catch (error) {
             if (status) { status.className = 'status-indicator error'; status.title = error.message; }
-            messageReviewCode.innerHTML = wp_autoplugin.messages.code_generation_error + ' <pre>' + error.message + '</pre>';
+            messageReviewCode.innerHTML = wp_bizerbuilder.messages.code_generation_error + ' <pre>' + error.message + '</pre>';
         }
     }
 

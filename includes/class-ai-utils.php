@@ -2,10 +2,10 @@
 /**
  * AI helper utilities.
  *
- * @package WP-Autoplugin
+ * @package WP-Bizerbuilder
  */
 
-namespace WP_Autoplugin;
+namespace WP_Bizerbuilder;
 
 if ( ! defined( 'ABSPATH' ) ) {
 	exit;
@@ -28,6 +28,7 @@ class AI_Utils {
 			'gpt-4.1',
 			'gpt-4.1-mini',
 			'gpt-4.1-nano',
+			'gpt-5.5',
 			'gpt-5',
 			'gpt-5-mini',
 			'gpt-5-nano',
@@ -46,8 +47,8 @@ class AI_Utils {
 	 * @param int          $max_images Maximum number of images to accept.
 	 *
 	 * Filters:
-	 * - wp_autoplugin_max_prompt_image_bytes : int Maximum bytes per image (defaults to 5MB).
-	 * - wp_autoplugin_prompt_image_mime_types: array Allowed MIME types.
+	 * - wp_bizerbuilder_max_prompt_image_bytes : int Maximum bytes per image (defaults to 5MB).
+	 * - wp_bizerbuilder_prompt_image_mime_types: array Allowed MIME types.
 	 * @return array[]
 	 */
 	public static function parse_prompt_images( $raw_images, $max_images = 6 ) {
@@ -65,9 +66,9 @@ class AI_Utils {
 		}
 
 		$images          = [];
-		$max_image_bytes = apply_filters( 'wp_autoplugin_max_prompt_image_bytes', 5 * 1024 * 1024 );
+		$max_image_bytes = apply_filters( 'wp_bizerbuilder_max_prompt_image_bytes', 5 * 1024 * 1024 );
 		$allowed_mimes = apply_filters(
-			'wp_autoplugin_prompt_image_mime_types',
+			'wp_bizerbuilder_prompt_image_mime_types',
 			[ 'image/jpeg', 'image/png', 'image/gif', 'image/webp', 'image/svg+xml' ]
 		);
 		$allowed_mimes = array_filter(
@@ -290,16 +291,16 @@ class AI_Utils {
 	 * @return bool
 	 */
 	public static function api_supports_prompt_images( $api ) {
-		if ( $api instanceof \WP_Autoplugin\OpenAI_API ) {
+		if ( $api instanceof \WP_Bizerbuilder\OpenAI_API ) {
 			$model = method_exists( $api, 'get_selected_model' ) ? $api->get_selected_model() : '';
 			return in_array( $model, self::get_supported_image_models(), true );
 		}
 
-		if ( $api instanceof \WP_Autoplugin\Google_Gemini_API ) {
+		if ( $api instanceof \WP_Bizerbuilder\Google_Gemini_API ) {
 			return true;
 		}
 
-		if ( $api instanceof \WP_Autoplugin\Anthropic_API ) {
+		if ( $api instanceof \WP_Bizerbuilder\Anthropic_API ) {
 			return true;
 		}
 
@@ -320,25 +321,25 @@ class AI_Utils {
 			return [];
 		}
 
-		if ( $api instanceof \WP_Autoplugin\OpenAI_Responses_API ) {
+		if ( $api instanceof \WP_Bizerbuilder\OpenAI_Responses_API ) {
 			return [
 				'input' => self::build_openai_responses_multimodal_input( $prompt, $prompt_images, $system_message ),
 			];
 		}
 
-		if ( $api instanceof \WP_Autoplugin\OpenAI_API ) {
+		if ( $api instanceof \WP_Bizerbuilder\OpenAI_API ) {
 			return [
 				'messages' => self::build_openai_multimodal_messages( $prompt, $prompt_images, $system_message ),
 			];
 		}
 
-		if ( $api instanceof \WP_Autoplugin\Google_Gemini_API ) {
+		if ( $api instanceof \WP_Bizerbuilder\Google_Gemini_API ) {
 			return [
 				'contents' => self::build_gemini_multimodal_contents( $prompt, $prompt_images ),
 			];
 		}
 
-		if ( $api instanceof \WP_Autoplugin\Anthropic_API ) {
+		if ( $api instanceof \WP_Bizerbuilder\Anthropic_API ) {
 			return [
 				'messages' => [
 					[

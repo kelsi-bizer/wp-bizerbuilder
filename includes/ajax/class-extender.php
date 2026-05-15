@@ -1,15 +1,15 @@
 <?php
 /**
- * WP-Autoplugin AJAX Extender class.
+ * WP-Bizerbuilder AJAX Extender class.
  *
- * @package WP-Autoplugin
+ * @package WP-Bizerbuilder
  */
 
-namespace WP_Autoplugin\Ajax;
+namespace WP_Bizerbuilder\Ajax;
 
-use WP_Autoplugin\Plugin_Extender;
-use WP_Autoplugin\Plugin_Installer;
-use WP_Autoplugin\AI_Utils;
+use WP_Bizerbuilder\Plugin_Extender;
+use WP_Bizerbuilder\Plugin_Installer;
+use WP_Bizerbuilder\AI_Utils;
 
 if ( ! defined( 'ABSPATH' ) ) {
 	exit;
@@ -22,14 +22,14 @@ class Extender {
 	/**
 	 * The Admin object for accessing specialized model APIs.
 	 *
-	 * @var \WP_Autoplugin\Admin\Admin
+	 * @var \WP_Bizerbuilder\Admin\Admin
 	 */
 	private $admin;
 
 	/**
 	 * Constructor.
 	 *
-	 * @param \WP_Autoplugin\Admin\Admin $admin The admin instance.
+	 * @param \WP_Bizerbuilder\Admin\Admin $admin The admin instance.
 	 */
 	public function __construct( $admin ) {
 		$this->admin = $admin;
@@ -119,7 +119,7 @@ class Extender {
 			: '';
 
 		$planner_api   = $this->admin->api_handler->get_planner_api();
-		$extender      = new \WP_Autoplugin\Plugin_Extender( $planner_api );
+		$extender      = new \WP_Bizerbuilder\Plugin_Extender( $planner_api );
 		$prompt_images = isset( $_POST['prompt_images'] ) ? AI_Utils::parse_prompt_images( $_POST['prompt_images'] ) : [];
 		$plan_data     = $extender->plan_plugin_extension( $codebase['files'], $problem, $prompt_images );
 		if ( is_wp_error( $plan_data ) ) {
@@ -130,7 +130,7 @@ class Extender {
 		$token_usage = $planner_api->get_last_token_usage();
 
 		// Strip code fences if model returns ```json blocks.
-		$plan_data = \WP_Autoplugin\AI_Utils::strip_code_fences( $plan_data, 'json' );
+		$plan_data = \WP_Bizerbuilder\AI_Utils::strip_code_fences( $plan_data, 'json' );
 
 		wp_send_json_success(
 			[
@@ -160,7 +160,7 @@ class Extender {
 			: '';
 
 		$coder_api = $this->admin->api_handler->get_coder_api();
-		$extender  = new \WP_Autoplugin\Plugin_Extender( $coder_api );
+		$extender  = new \WP_Bizerbuilder\Plugin_Extender( $coder_api );
 		$code      = $extender->extend_plugin( $codebase['files'], $problem, $ai_description, $codebase['is_complex'] );
 
 		// Get token usage from the actual API that was used.
@@ -200,17 +200,17 @@ class Extender {
 		$generated_files_array   = json_decode( $generated_files, true );
 
 		if ( ! $project_structure_array || ! isset( $project_structure_array['files'] ) ) {
-			wp_send_json_error( esc_html__( 'Invalid input data.', 'wp-autoplugin' ) );
+			wp_send_json_error( esc_html__( 'Invalid input data.', 'wp-bizerbuilder' ) );
 		}
 
 		$files = $project_structure_array['files'];
 		if ( ! isset( $files[ $file_index ] ) ) {
-			wp_send_json_error( esc_html__( 'File index out of range.', 'wp-autoplugin' ) );
+			wp_send_json_error( esc_html__( 'File index out of range.', 'wp-bizerbuilder' ) );
 		}
 
 		$file_info    = $files[ $file_index ];
 		$coder_api    = $this->admin->api_handler->get_coder_api();
-		$extender     = new \WP_Autoplugin\Plugin_Extender( $coder_api );
+		$extender     = new \WP_Bizerbuilder\Plugin_Extender( $coder_api );
 		$file_content = $extender->extend_single_file( $codebase['files'], $plugin_plan, $project_structure_array, is_array( $generated_files_array ) ? $generated_files_array : [], $file_info );
 		if ( is_wp_error( $file_content ) ) {
 			wp_send_json_error( $file_content->get_error_message() );
@@ -218,7 +218,7 @@ class Extender {
 
 		// Strip out code fences.
 		$file_type    = isset( $file_info['type'] ) ? $file_info['type'] : 'php';
-		$file_content = \WP_Autoplugin\AI_Utils::strip_code_fences( $file_content );
+		$file_content = \WP_Bizerbuilder\AI_Utils::strip_code_fences( $file_content );
 
 		$token_usage = $coder_api->get_last_token_usage();
 

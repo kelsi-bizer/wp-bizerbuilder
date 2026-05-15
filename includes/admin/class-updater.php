@@ -1,13 +1,13 @@
 <?php
 /**
- * WP-Autoplugin Updater class.
+ * WP-Bizerbuilder Updater class.
  *
- * @package WP-Autoplugin
+ * @package WP-Bizerbuilder
  */
 
-namespace WP_Autoplugin\Admin;
+namespace WP_Bizerbuilder\Admin;
 
-use WP_Autoplugin\GitHub_Updater;
+use WP_Bizerbuilder\GitHub_Updater;
 
 if ( ! defined( 'ABSPATH' ) ) {
 	exit;
@@ -36,17 +36,17 @@ class Updater {
 		}
 
 		$config = [
-			'slug'               => plugin_basename( WP_AUTOPLUGIN_DIR . 'wp-autoplugin.php' ),
-			'proper_folder_name' => dirname( plugin_basename( WP_AUTOPLUGIN_DIR . 'wp-autoplugin.php' ) ),
-			'api_url'            => 'https://api.github.com/repos/WP-Autoplugin/wp-autoplugin',
-			'raw_url'            => 'https://raw.githubusercontent.com/WP-Autoplugin/wp-autoplugin/main/',
-			'github_url'         => 'https://github.com/WP-Autoplugin/wp-autoplugin',
-			'zip_url'            => 'https://github.com/WP-Autoplugin/wp-autoplugin/archive/refs/heads/main.zip',
+			'slug'               => plugin_basename( WP_BIZERBUILDER_DIR . 'wp-bizerbuilder.php' ),
+			'proper_folder_name' => dirname( plugin_basename( WP_BIZERBUILDER_DIR . 'wp-bizerbuilder.php' ) ),
+			'api_url'            => 'https://api.github.com/repos/kelsi-bizer/wp-bizerbuilder',
+			'raw_url'            => 'https://raw.githubusercontent.com/kelsi-bizer/wp-bizerbuilder/main/',
+			'github_url'         => 'https://github.com/kelsi-bizer/wp-bizerbuilder',
+			'zip_url'            => 'https://github.com/kelsi-bizer/wp-bizerbuilder/archive/refs/heads/main.zip',
 			'requires'           => '6.0',
 			'tested'             => '6.6.2',
-			'description'        => esc_html__( 'A plugin that generates other plugins on-demand using AI.', 'wp-autoplugin' ),
-			'homepage'           => 'https://github.com/WP-Autoplugin/wp-autoplugin',
-			'version'            => WP_AUTOPLUGIN_VERSION,
+			'description'        => esc_html__( 'A plugin that generates other plugins on-demand using AI.', 'wp-bizerbuilder' ),
+			'homepage'           => 'https://github.com/kelsi-bizer/wp-bizerbuilder',
+			'version'            => WP_BIZERBUILDER_VERSION,
 		];
 
 		// Instantiate the updater class.
