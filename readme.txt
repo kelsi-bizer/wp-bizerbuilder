@@ -1,6 +1,5 @@
 === WP-Bizerbuilder ===
 Contributors: balazspiller
-Donate link: https://wp-bizerbuilder.com
 Tags: ai, plugin generator, development, wordpress, automation
 Requires at least: 6.0
 Tested up to: 6.9
@@ -31,11 +30,11 @@ WP-Bizerbuilder is a free and open-source WordPress plugin that leverages AI to 
 2. WP-Bizerbuilder generates a development plan and code using AI.
 3. Review, modify, and install the generated plugin with ease.
 
-For more details and screenshots, visit [https://wp-bizerbuilder.com](https://wp-bizerbuilder.com).
+For more details, visit the [WP-Bizerbuilder GitHub repository](https://github.com/kelsi-bizer/wp-bizerbuilder).
 
 == Installation ==
 
-1. Download the plugin from the WordPress Plugin Directory.
+1. Download the latest release from the [WP-Bizerbuilder GitHub repository](https://github.com/kelsi-bizer/wp-bizerbuilder/releases).
 2. Upload the plugin zip file through the WordPress admin Plugins screen, or extract and upload the `wp-bizerbuilder` folder to `/wp-content/plugins/` via FTP.
 3. Activate the plugin through the Plugins screen in WordPress.
 4. Go to the WP-Bizerbuilder settings page and enter your API key(s).
@@ -47,7 +46,7 @@ For more details and screenshots, visit [https://wp-bizerbuilder.com](https://wp
 1. Generate plugin form.
 2. Review generated plan.
 3. Review generated code.
-4. Bizerbuilders listing screen.
+4. Generated plugins listing screen.
 5. Fix plugin form.
 
 == Frequently Asked Questions ==

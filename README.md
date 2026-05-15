@@ -1,7 +1,7 @@
 # WP-Bizerbuilder
 
 <p align="center">
-  <img src="https://wp-bizerbuilder.com/logo192.png" alt="WP-Bizerbuilder Logo" width="128">
+  <img src="assets/logo.svg" alt="WP-Bizerbuilder logo" width="128" height="128">
 </p>
 
 WP-Bizerbuilder is a free WordPress plugin that uses AI to assist in generating, fixing, and extending plugins on-demand. It enables users to quickly create functional plugins from simple descriptions, addressing specific needs without unnecessary bloat.
@@ -46,13 +46,6 @@ WP-Bizerbuilder's complex plugin mode enables the creation of sophisticated, mul
 - **Scalable Architecture**: Plugins designed for growth and maintenance
 - **Professional Standards**: Code that follows WordPress development best practices
 
-<details>
-<summary>Click to view complex plugin generation screenshot</summary>
-
-![Complex plugin generation interface](https://wp-bizerbuilder.com/screenshot-6.png)
-
-</details>
-
 ## Specialized Models Configuration
 
 Optimize your plugin generation workflow by assigning different AI models to specific tasks:
@@ -79,13 +72,6 @@ This helps you:
 - Choose the most cost-efficient models for your needs
 - Understand the token impact of different generation modes
 
-<details>
-<summary>Click to view token usage information screenshot</summary>
-
-![Token usage information](https://wp-bizerbuilder.com/screenshot-7.png)
-
-</details>
-
 ## Extend Third-Party Plugins and Themes with Hooks
 
 WP-Bizerbuilder allows you to easily extend **any plugin** or **theme** directly from the WordPress admin dashboard:
@@ -94,8 +80,6 @@ WP-Bizerbuilder allows you to easily extend **any plugin** or **theme** directly
 - WP-Bizerbuilder will analyze the selected plugin or theme, extracting available action and filter hooks along with relevant contextual details.
 - Provide a description of the desired extension; WP-Bizerbuilder assesses the technical feasibility using available hooks.
 - A new extension plugin will be generated based on your description, allowing seamless integration with the existing functionality.
-
-Demo video: [Extend a third-party plugin with WP-Bizerbuilder](https://www.youtube.com/watch?v=_9RnFcEGncY)
 
 ## Auto-detect Fatal Errors
 
@@ -110,6 +94,7 @@ WP-Bizerbuilder supports 30+ AI models, including:
 - Claude 4.5 Haiku
 - o3
 - o4-mini
+- GPT-5.5
 - GPT-5.1
 - GPT-5.1-Codex
 - GPT-5.1-Codex-Max
@@ -157,7 +142,7 @@ WP-Bizerbuilder aims to generate code that adheres to WordPress coding standards
 
 ## Installation
 
-1. Download the latest release from the [Releases](https://github.com/WP-Bizerbuilder/wp-bizerbuilder/releases) page.
+1. Download the latest release from the [Releases](https://github.com/kelsi-bizer/wp-bizerbuilder/releases) page.
 2. Upload the plugin zip file through the 'Plugins' screen in WordPress, or unzip the file and upload the `wp-bizerbuilder` folder to the `/wp-content/plugins/` directory.
 3. Activate the plugin through the 'Plugins' screen in WordPress.
 4. Go to the WP-Bizerbuilder settings page and enter your API key(s).
@@ -166,27 +151,13 @@ WP-Bizerbuilder aims to generate code that adheres to WordPress coding standards
 
 ## Screenshots
 
-<details>
-<summary>Click to view screenshots</summary>
+The plugin includes the following admin screens:
 
 1. Generate plugin form
-![Generate plugin form](https://wp-bizerbuilder.com/screenshot-1.png)
-
 2. Review generated plan
-![Review generated plan](https://wp-bizerbuilder.com/screenshot-2.png)
-
 3. Review generated code
-![Review generated code](https://wp-bizerbuilder.com/screenshot-3.png)
-
-4. Bizerbuilders listing screen
-![Bizerbuilders listing screen](https://wp-bizerbuilder.com/screenshot-4.png)
-
+4. Generated plugins listing screen
 5. Fix plugin form
-![Fix plugin form](https://wp-bizerbuilder.com/screenshot-5.png)
-
-</details>
-
-Or watch the [WP-Bizerbuilder demo video on Youtube](https://www.youtube.com/watch?v=b36elwTLfa4) that shows how it generates a plugin and fixes a bug.
 
 ## Translations
 
